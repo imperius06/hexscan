@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hexcan.netlify.app/sitemap.xml
+Sitemap: https://hexscan-tools.vercel.app/sitemap.xml
