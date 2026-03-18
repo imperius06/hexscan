@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="Tt89cyJQ5HYOtTWDx58xAXb4QgBmOmZRdYZVJTSkFCc" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HexScan — Free Online Security Tools for Developers & Pentesters</title>
+  <meta name="description" content="Free online security tools: password generator, email breach checker, subdomain finder, IP address lookup, HTTP header analyzer, directory scanner, CSP generator and Base64 decoder." />
+  <meta name="keywords" content="http header analyzer, check email hacked, subdomain finder, ip address lookup, password generator, base64 decoder, csp generator, directory scanner, security tools online, free pentesting tools" />
+  <meta name="author" content="HexScan" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="HexScan — Free Online Security Tools" />
+  <meta property="og:description" content="8 free security tools for developers and pentesters. No login required." />
+  <meta property="og:url" content="https://hexcan.netlify.app" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="HexScan — Free Online Security Tools" />
+  <meta name="twitter:description" content="8 free security tools for developers and pentesters. No login required." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3698493513053471" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Hex<strong>Scan</strong></span>
+      </div>
+      <nav class="nav">
+        <a href="#privacy">Privacy</a>
+        <a href="#network">Network</a>
+        <a href="#websec">Web Security</a>
+        <a href="#devtools">Dev Tools</a>
+        <a href="https://www.paypal.com/paypalme/imperius06" target="_blank" class="nav-donate">❤️ Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Free · No login · No tracking</div>
+      <h1 class="hero-title">Security tools<br /><em>that actually work</em></h1>
+      <p class="hero-subtitle">8 professional tools for developers, pentesters, and anyone who cares about security.</p>
+      <div class="hero-tools-grid">
+        <a href="#password" class="hero-chip">🔑 Password Gen</a>
+        <a href="#breach" class="hero-chip">🔍 Breach Check</a>
+        <a href="#subdomains" class="hero-chip">🎯 Subdomain Recon</a>
+        <a href="#ipanalyzer" class="hero-chip">🌐 IP Analyzer</a>
+        <a href="#headers" class="hero-chip">🛡️ HTTP Headers</a>
+        <a href="#exposure" class="hero-chip">🕵️ Exposure Check</a>
+        <a href="#csp" class="hero-chip">📋 CSP Generator</a>
+        <a href="#base64" class="hero-chip">🔄 Base64 / JWT</a>
+      </div>
+    </div>
+    <div class="hero-grid-bg"></div>
+  </section>
+
+  <main class="container tools-container">
+
+    <!-- CATEGORY 1 — PRIVACY & PASSWORDS -->
+    <div class="category-header" id="privacy">
+      <span class="category-icon">🔐</span>
+      <div>
+        <div class="category-title">Privacy & Passwords</div>
+        <div class="category-desc">Protect your credentials and check for leaks</div>
+      </div>
+      <div class="category-line"></div>
+    </div>
+
+    <!-- TOOL 1: PASSWORD GENERATOR -->
+    <section class="tool-card" id="password">
+      <div class="tool-header">
+        <span class="tool-icon">🔑</span>
+        <div>
+          <h2 class="tool-title">Password Generator</h2>
+          <p class="tool-desc">Generate strong, crypto-secure passwords instantly.</p>
+        </div>
+      </div>
+      <div class="tool-body">
+        <div class="output-box">
+          <span id="pw-output" class="mono">Click Generate</span>
+          <button class="copy-btn" onclick="copyText('pw-output')">Copy</button>
+        </div>
+        <div class="options-row">
+          <label>Length: <span id="pw-len-label">16</span>
+            <input type="range" id="pw-length" min="8" max="64" value="16"
+              oninput="document.getElementById('pw-len-label').textContent=this.value" />
+          </label>
+          <label><input type="checkbox" id="pw-upper" checked /> Uppercase</label>
+          <label><input type="checkbox" id="pw-lower" checked /> Lowercase</label>
+          <label><input type="checkbox" id="pw-numbers" checked /> Numbers</label>
+          <label><input type="checkbox" id="pw-symbols" checked /> Symbols</label>
+        </div>
+        <button class="btn-primary" onclick="generatePassword()">⚡ Generate</button>
+        <div id="pw-strength" class="strength-bar-wrap" style="display:none">
+          <div id="pw-strength-bar" class="strength-bar"></div>
+          <span id="pw-strength-label"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOL 2: BREACH CHECKER -->
+    <section class="tool-card" id="breach">
+      <div class="tool-header">
+        <span class="tool-icon">🔍</span>
+        <div>
+          <h2 class="tool-title">Breach Checker</h2>
+          <p class="tool-desc">Check if your email appeared in a known data breach.</p>
+        </div>
+      </div>
+      <div class="tool-body">
+        <div class="input-row">
+          <input type="email" id="breach-email" class="text-input" placeholder="you@example.com" />
+          <button class="btn-primary" style="margin-top:0" onclick="checkBreach()">Check</button>
+        </div>
+        <div id="breach-result" class="result-box hidden"></div>
+        <p class="tool-note">Uses the <a href="https://leakcheck.io" target="_blank">LeakCheck</a> API. Your data is not stored.</p>
+      </div>
+    </section>
+
+    <!-- CATEGORY 2 — NETWORK & RECON -->
+    <div class="category-header" id="network">
+      <span class="category-icon">🌐</span>
+      <div>
+        <div class="category-title">Network & Recon</div>
+        <div class="category-desc">Passive reconnaissance and IP intelligence</div>
+      </div>
+      <div class="category-line"></div>
+    </div>
+
+    <!-- TOOL 6: SUBDOMAIN RECON -->
+    <section class="tool-card" id="subdomains">
+      <div class="tool-header">
+        <span class="tool-icon">🎯</span>
+        <div>
+          <h2 class="tool-title">Subdomain Recon</h2>
+          <p class="tool-desc">Discover subdomains using passive sources (crt.sh + HackerTarget).</p>
+        </div>
+      </div>
+      <div class="tool-body">
+        <div class="input-row">
+          <input type="text" id="sub-domain" class="text-input" placeholder="example.com" />
+          <button class="btn-primary" style="margin-top:0" onclick="scanSubdomains()">🔍 Scan</button>
+        </div>
+        <p class="tool-note">⚠️ Passive recon only — queries public databases, no direct scanning.</p>
+        <div id="sub-result" class="result-list hidden"></div>
+      </div>
+    </section>
+
+    <!-- TOOL 8: IP ANALYZER -->
+    <section class="tool-card" id="ipanalyzer">
+      <div class="tool-header">
+        <span class="tool-icon">🌐</span>
+        <div>
+          <h2 class="tool-title">IP Analyzer</h2>
+          <p class="tool-desc">Geolocation, reputation, open ports, and domains on any IP.</p>
+        </div>
+      </div>
+      <div class="tool-body">
+        <div class="input-row">
+          <input type="text" id="ip-input" class="text-input" placeholder="8.8.8.8" />
+          <button class="btn-primary" style="margin-top:0" onclick="analyzeIP()">🔍 Analyze</button>
+        </div>
+        <div id="ip-result" class="result-list hidden"></div>
+      </div>
+    </section>
+
+    <!-- CATEGORY 3 — WEB SECURITY -->
+    <div class="category-header" id="websec">
+      <span class="category-icon">🛡️</span>
+      <div>
+        <div class="category-title">Web Security</div>
+        <div class="category-desc">Audit and harden web applications</div>
+      </div>
+      <div class="category-line"></div>
+    </div>
+
+    <!-- TOOL 4: HTTP HEADER ANALYZER -->
+    <section class="tool-card" id="headers">
+      <div class="tool-header">
+        <span class="tool-icon">🛡️</span>
+        <div>
+          <h2 class="tool-title">HTTP Header Analyzer</h2>
+          <p class="tool-desc">Scan any URL or paste headers to get a full security audit.</p>
+        </div>
+      </div>
+      <div class="tool-body">
+        <div class="input-row" style="margin-bottom:14px">
+          <input type="text" id="scan-url" class="text-input" placeholder="https://example.com" />
+          <button class="btn-primary" style="margin-top:0" onclick="scanURL()">⚡ Live Scan</button>
+        </div>
+        <textarea id="headers-input" class="textarea tall" placeholder="Or paste HTTP response headers manually...
+Example:
+Content-Type: text/html
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=31536000"></textarea>
+        <button class="btn-primary" onclick="analyzeHeaders()">Analyze Headers</button>
+        <div id="headers-result" class="result-list hidden"></div>
+      </div>
+    </section>
+
+    <!-- TOOL 7: DIRECTORY EXPOSURE CHECKER -->
+    <section class="tool-card" id="exposure">
+      <div class="tool-header">
+        <span class="tool-icon">🕵️</span>
+        <div>
+          <h2 class="tool-title">Directory Exposure Checker</h2>
+          <p class="tool-desc">Check 120 sensitive paths: configs, backups, APIs, admin panels and more.</p>
+        </div>
+      </div>
+      <div class="tool-body">
+        <div class="tabs" style="flex-wrap:wrap;gap:4px">
+          <button class="tab exp-tab active" onclick="setExposureCat('all',this)">All (120)</button>
+          <button class="tab exp-tab" onclick="setExposureCat('admin',this)">Admin</button>
+          <button class="tab exp-tab" onclick="setExposureCat('config',this)">Configs</button>
+          <button class="tab exp-tab" onclick="setExposureCat('backup',this)">Backups</button>
+          <button class="tab exp-tab" onclick="setExposureCat('api',this)">APIs</button>
+          <button class="tab exp-tab" onclick="setExposureCat('git',this)">Git</button>
+          <button class="tab exp-tab" onclick="setExposureCat('wordpress',this)">WordPress</button>
+          <button class="tab exp-tab" onclick="setExposureCat('logs',this)">Logs</button>
+          <button class="tab exp-tab" onclick="setExposureCat('server',this)">Server</button>
+        </div>
+        <div class="input-row" style="margin-top:14px">
+          <input type="text" id="exposure-url" class="text-input" placeholder="https://example.com" />
+          <button class="btn-primary" style="margin-top:0" onclick="checkExposure()">🕵️ Check</button>
+        </div>
+        <p class="tool-note">⚠️ Only use on sites you own or have permission to test.</p>
+        <div id="exposure-result" class="result-list hidden"></div>
+      </div>
+    </section>
+
+    <!-- TOOL 5: CSP GENERATOR -->
+    <section class="tool-card" id="csp">
+      <div class="tool-header">
+        <span class="tool-icon">📋</span>
+        <div>
+          <h2 class="tool-title">CSP Generator</h2>
+          <p class="tool-desc">Build a Content Security Policy header visually.</p>
+        </div>
+      </div>
+      <div class="tool-body">
+        <div class="csp-grid">
+          <div class="csp-row">
+            <label>script-src</label>
+            <input type="text" class="text-input" id="csp-script" placeholder="'self' https://cdn.example.com" />
+          </div>
+          <div class="csp-row">
+            <label>style-src</label>
+            <input type="text" class="text-input" id="csp-style" placeholder="'self' 'unsafe-inline'" />
+          </div>
+          <div class="csp-row">
+            <label>img-src</label>
+            <input type="text" class="text-input" id="csp-img" placeholder="'self' data: https:" />
+          </div>
+          <div class="csp-row">
+            <label>connect-src</label>
+            <input type="text" class="text-input" id="csp-connect" placeholder="'self' https://api.example.com" />
+          </div>
+          <div class="csp-row">
+            <label>font-src</label>
+            <input type="text" class="text-input" id="csp-font" placeholder="'self' https://fonts.gstatic.com" />
+          </div>
+          <div class="csp-row">
+            <label>frame-src</label>
+            <input type="text" class="text-input" id="csp-frame" placeholder="'none'" />
+          </div>
+        </div>
+        <div class="options-row">
+          <label><input type="checkbox" id="csp-upgrade" checked /> upgrade-insecure-requests</label>
+          <label><input type="checkbox" id="csp-block" checked /> block-all-mixed-content</label>
+        </div>
+        <button class="btn-primary" onclick="generateCSP()">Generate CSP</button>
+        <div class="output-box mt hidden" id="csp-output-wrap">
+          <code id="csp-output" class="mono small"></code>
+          <button class="copy-btn" onclick="copyText('csp-output')">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY 4 — DEVELOPER TOOLS -->
+    <div class="category-header" id="devtools">
+      <span class="category-icon">🔧</span>
+      <div>
+        <div class="category-title">Developer Tools</div>
+        <div class="category-desc">Encode, decode and inspect data formats</div>
+      </div>
+      <div class="category-line"></div>
+    </div>
+
+    <!-- TOOL 3: BASE64 & JWT -->
+    <section class="tool-card" id="base64">
+      <div class="tool-header">
+        <span class="tool-icon">🔄</span>
+        <div>
+          <h2 class="tool-title">Base64 &amp; JWT Decoder</h2>
+          <p class="tool-desc">Encode, decode Base64 or decode a JWT token instantly.</p>
+        </div>
+      </div>
+      <div class="tool-body">
+        <div class="tabs">
+          <button class="tab active" onclick="switchTab(this,'b64-encode')">Encode</button>
+          <button class="tab" onclick="switchTab(this,'b64-decode')">Decode</button>
+          <button class="tab" onclick="switchTab(this,'jwt-decode')">JWT</button>
+        </div>
+        <div id="b64-encode" class="tab-panel active">
+          <textarea id="b64e-input" class="textarea" placeholder="Text to encode..."></textarea>
+          <button class="btn-primary" onclick="b64Encode()">Encode →</button>
+          <div class="output-box mt">
+            <span id="b64e-output" class="mono small"></span>
+            <button class="copy-btn" onclick="copyText('b64e-output')">Copy</button>
+          </div>
+        </div>
+        <div id="b64-decode" class="tab-panel">
+          <textarea id="b64d-input" class="textarea" placeholder="Base64 to decode..."></textarea>
+          <button class="btn-primary" onclick="b64Decode()">Decode →</button>
+          <div class="output-box mt">
+            <span id="b64d-output" class="mono small"></span>
+            <button class="copy-btn" onclick="copyText('b64d-output')">Copy</button>
+          </div>
+        </div>
+        <div id="jwt-decode" class="tab-panel">
+          <textarea id="jwt-input" class="textarea" placeholder="Paste JWT token..."></textarea>
+          <button class="btn-primary" onclick="decodeJWT()">Decode JWT →</button>
+          <pre id="jwt-output" class="code-output hidden"></pre>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>HexScan — Free security tools. No login. No tracking. Open source.</p>
+      <p class="footer-links">
+        <a href="about.html">About</a> · <a href="">GitHub</a> · <a href="draeneills@gmail.com">Report a bug</a> · <a href="privacy.html">Privacy Policy</a> · <a href="https://www.paypal.com/paypalme/imperius06" target="_blank">❤️ Donate</a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast">Copied!</div>
+
+  <script src="js/main.js"></script>
+  <script src="js/tool1-password.js"></script>
+  <script src="js/tool2-breach.js"></script>
+  <script src="js/tool3-base64.js"></script>
+  <script src="js/tool4-headers.js"></script>
+  <script src="js/tool5-csp.js"></script>
+  <script src="js/tool6-subdomains.js"></script>
+  <script src="js/tool7-exposure.js"></script>
+  <script src="js/tool8-ip.js"></script>
+</body>
+</html>
