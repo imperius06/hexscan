@@ -7,8 +7,10 @@
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://pagead2.googlesyndication.com https://static.cloudflareinsights.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://sectools-headers.draeneills.workers.dev https://api.hackertarget.com https://crt.sh https://internetdb.shodan.io https://leakcheck.io https://ip-api.com https://ep1.adtrafficquality.google https://cloudflareinsights.com; img-src 'self' data: https://pagead2.googlesyndication.com; frame-src 'none'" }
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://pagead2.googlesyndication.com https://static.cloudflareinsights.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://sectools-headers.draeneills.workers.dev https://api.hackertarget.com https://crt.sh https://internetdb.shodan.io https://leakcheck.io https://ip-api.com https://api.abuseipdb.com https://ep1.adtrafficquality.google https://cloudflareinsights.com; img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'none'; frame-ancestors 'none'"
+        }
       ]
     }
   ]
