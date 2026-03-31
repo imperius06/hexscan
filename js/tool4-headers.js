@@ -30,8 +30,8 @@ const SECURITY_HEADERS = [
     name: 'X-Frame-Options', desc: 'Prevents clickjacking attacks', required: true,
     validate(val) {
       const v = val.toUpperCase().trim();
-      if (v === 'DENY') return { status: 'pass', message: 'DENY - strongest setting. No framing allowed.' };
-      if (v === 'SAMEORIGIN') return { status: 'pass', message: 'SAMEORIGIN - only same origin can frame this page.' };
+      if (v === 'DENY') return { status: 'pass', message: 'DENY — strongest setting. No framing allowed.' };
+      if (v === 'SAMEORIGIN') return { status: 'pass', message: 'SAMEORIGIN — only same origin can frame this page.' };
       if (v.startsWith('ALLOW-FROM')) return { status: 'warn', message: 'ALLOW-FROM is deprecated. Use CSP frame-ancestors instead.' };
       return { status: 'fail', message: 'Invalid value: "' + val + '". Use DENY or SAMEORIGIN.' };
     }
@@ -39,7 +39,7 @@ const SECURITY_HEADERS = [
   {
     name: 'X-Content-Type-Options', desc: 'Prevents MIME-type sniffing', required: true,
     validate(val) {
-      if (val.trim().toLowerCase() === 'nosniff') return { status: 'pass', message: 'nosniff - correct and only valid value.' };
+      if (val.trim().toLowerCase() === 'nosniff') return { status: 'pass', message: 'nosniff — correct and only valid value.' };
       return { status: 'fail', message: 'Invalid value: "' + val + '". Must be exactly "nosniff".' };
     }
   },
@@ -50,8 +50,8 @@ const SECURITY_HEADERS = [
       const unsafe = ['unsafe-url', 'origin-when-cross-origin'];
       const v = val.trim().toLowerCase();
       if (unsafe.includes(v)) return { status: 'fail', message: '"' + val + '" leaks full URL to third parties.' };
-      if (safe.includes(v)) return { status: 'pass', message: '"' + val + '" - good privacy protection.' };
-      return { status: 'warn', message: '"' + val + '" - verify this is intentional.' };
+      if (safe.includes(v)) return { status: 'pass', message: '"' + val + '" — good privacy protection.' };
+      return { status: 'warn', message: '"' + val + '" — verify this is intentional.' };
     }
   },
   {
@@ -66,8 +66,8 @@ const SECURITY_HEADERS = [
     name: 'X-XSS-Protection', desc: 'Legacy XSS filter for older browsers', required: false,
     validate(val) {
       const v = val.trim();
-      if (v === '0') return { status: 'pass', message: 'Disabled (0) - correct for modern sites with strong CSP.' };
-      if (v === '1; mode=block') return { status: 'pass', message: 'Enabled with block mode - good for legacy browser support.' };
+      if (v === '0') return { status: 'pass', message: 'Disabled (0) — correct for modern sites with strong CSP.' };
+      if (v === '1; mode=block') return { status: 'pass', message: 'Enabled with block mode — good for legacy browser support.' };
       if (v === '1') return { status: 'warn', message: 'Add mode=block for stronger protection.' };
       return { status: 'warn', message: 'Unusual value: "' + val + '"' };
     }
@@ -76,10 +76,10 @@ const SECURITY_HEADERS = [
     name: 'Cache-Control', desc: 'Controls how responses are cached', required: false,
     validate(val) {
       const v = val.toLowerCase();
-      if (v.includes('no-store')) return { status: 'pass', message: 'no-store - sensitive data will not be cached.' };
-      if (v.includes('no-cache') && v.includes('private')) return { status: 'pass', message: 'no-cache + private - good for authenticated pages.' };
-      if (v.includes('public') && !v.includes('max-age')) return { status: 'warn', message: 'public without max-age - browser may cache indefinitely.' };
-      if (v.includes('max-age=0')) return { status: 'pass', message: 'max-age=0 - forces revalidation on every request.' };
+      if (v.includes('no-store')) return { status: 'pass', message: 'no-store — sensitive data will not be cached.' };
+      if (v.includes('no-cache') && v.includes('private')) return { status: 'pass', message: 'no-cache + private — good for authenticated pages.' };
+      if (v.includes('public') && !v.includes('max-age')) return { status: 'warn', message: 'public without max-age — browser may cache indefinitely.' };
+      if (v.includes('max-age=0')) return { status: 'pass', message: 'max-age=0 — forces revalidation on every request.' };
       return { status: 'warn', message: 'Review caching policy: "' + val + '"' };
     }
   },
@@ -88,23 +88,59 @@ const SECURITY_HEADERS = [
 async function scanURL() {
   const url = document.getElementById('scan-url').value.trim();
   const resultList = document.getElementById('headers-result');
-  if (!url) return;
+
+  if (!url) {
+    const inp = document.getElementById('scan-url');
+    inp.style.animation = 'none';
+    inp.offsetHeight;
+    inp.style.animation = 'inputShake 0.35s ease';
+    return;
+  }
 
   const target = url.startsWith('http') ? url : 'https://' + url;
-  resultList.innerHTML = '<div class="result-item warn"><span>🔍</span><div class="label">Scanning...</div></div>';
+
+  // ── LOADING STATE ──
   resultList.classList.remove('hidden');
+  resultList.innerHTML = `
+    <div class="result-item" style="border-left:3px solid var(--accent);margin-bottom:12px">
+      <div class="hx-spinner"></div>
+      <div style="flex:1">
+        <div class="label" style="font-family:var(--font-mono)">Fetching headers from <strong>${target}</strong></div>
+        <div class="detail" style="font-family:var(--font-mono)">Routing through Cloudflare Worker proxy...</div>
+      </div>
+    </div>
+    <div class="hx-progress-track"><div class="hx-progress-bar hx-indeterminate"></div></div>
+  `;
 
   try {
     const response = await fetch('https://sectools-headers.draeneills.workers.dev/?url=' + encodeURIComponent(target));
     const data = await response.json();
+
     if (data.error) {
-      resultList.innerHTML = '<div class="result-item fail"><span>❌</span><div class="label">' + data.error + '</div></div>';
+      resultList.innerHTML = `
+        <div class="result-item fail">
+          <span>❌</span>
+          <div>
+            <div class="label">Failed to fetch headers</div>
+            <div class="detail">${data.error}</div>
+          </div>
+        </div>`;
       return;
     }
-    document.getElementById('headers-input').value = Object.entries(data.headers).map(e => e[0] + ': ' + e[1]).join('\n');
+
+    document.getElementById('headers-input').value = Object.entries(data.headers)
+      .map(e => e[0] + ': ' + e[1]).join('\n');
     analyzeHeaders();
+
   } catch (err) {
-    resultList.innerHTML = '<div class="result-item fail"><span>❌</span><div class="label">Could not reach the Worker. Try again.</div></div>';
+    resultList.innerHTML = `
+      <div class="result-item fail">
+        <span>❌</span>
+        <div>
+          <div class="label">Connection error</div>
+          <div class="detail">Could not reach the Worker proxy. Check your connection and try again.</div>
+        </div>
+      </div>`;
   }
 }
 
@@ -115,7 +151,11 @@ function analyzeHeaders() {
   resultList.classList.remove('hidden');
 
   if (!raw) {
-    resultList.innerHTML = '<div class="result-item warn"><span class="label">No headers provided</span></div>';
+    resultList.innerHTML = `
+      <div class="result-item warn">
+        <span>⚠️</span>
+        <div class="label">No headers provided</div>
+      </div>`;
     return;
   }
 
@@ -129,42 +169,78 @@ function analyzeHeaders() {
     }
   });
 
-  let passCount = 0, warnCount = 0;
+  let passCount = 0, warnCount = 0, failCount = 0;
+  const items = [];
 
   SECURITY_HEADERS.forEach(function(h) {
     const value = parsed[h.name.toLowerCase()];
-    const item = document.createElement('div');
-    let status, message, icon;
+    let status, message;
 
     if (!value) {
       status = h.required ? 'fail' : 'warn';
-      message = 'Missing - ' + h.desc;
-      icon = h.required ? '❌' : '⚠️';
+      message = 'Missing — ' + h.desc;
     } else {
       const result = h.validate(value);
-      status = result.status; message = result.message;
-      icon = status === 'pass' ? '✅' : status === 'warn' ? '⚠️' : '❌';
+      status = result.status;
+      message = result.message;
       if (status === 'pass') passCount++;
       else if (status === 'warn') warnCount++;
+      else failCount++;
     }
 
-    item.className = 'result-item ' + status;
-    item.innerHTML = '<span>' + icon + '</span><div style="flex:1"><div class="label">' + h.name + '</div>' +
-      (value ? '<div class="detail" style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);margin-bottom:4px">' + value + '</div>' : '') +
-      '<div class="detail">' + message + '</div></div>';
-    resultList.appendChild(item);
+    if (!value && status === 'fail') failCount++;
+    else if (!value && status === 'warn') warnCount++;
+
+    const iconMap = { pass: '✅', warn: '⚠️', fail: '❌' };
+    items.push({ h, value, status, message, icon: iconMap[status] });
   });
 
   const total = SECURITY_HEADERS.length;
   const score = Math.round((passCount / total) * 100);
   const grade = score >= 90 ? 'A+' : score >= 75 ? 'A' : score >= 60 ? 'B' : score >= 40 ? 'C' : 'F';
+  const gradeColor = score >= 75 ? 'var(--green)' : score >= 50 ? 'var(--yellow)' : 'var(--red)';
   const scoreClass = score >= 75 ? 'pass' : score >= 50 ? 'warn' : 'fail';
 
+  // ── GRADE SUMMARY ──
   const summary = document.createElement('div');
   summary.className = 'result-item ' + scoreClass;
-  summary.style.cssText = 'margin-bottom:12px; border-width:2px;';
-  summary.innerHTML = '<span style="font-size:1.5rem">' + (score >= 75 ? '🏆' : score >= 50 ? '⚠️' : '🚨') + '</span>' +
-    '<div><div class="label" style="font-size:1rem">Security Score: ' + score + '% - Grade ' + grade + '</div>' +
-    '<div class="detail">' + passCount + ' passed · ' + warnCount + ' warnings · ' + (total - passCount - warnCount) + ' missing</div></div>';
-  resultList.insertBefore(summary, resultList.firstChild);
+  summary.style.cssText = 'margin-bottom:12px;border-width:2px;align-items:center';
+  summary.innerHTML = `
+    <div style="
+      width:52px;height:52px;border-radius:8px;
+      background:${gradeColor}22;border:2px solid ${gradeColor};
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.4rem;font-weight:700;color:${gradeColor};
+      font-family:var(--font-mono);flex-shrink:0
+    ">${grade}</div>
+    <div style="flex:1">
+      <div class="label" style="font-size:1rem">Security Score: ${score}%</div>
+      <div class="detail">
+        <span style="color:var(--green)">✓ ${passCount} passed</span> ·
+        <span style="color:var(--yellow)">⚠ ${warnCount} warnings</span> ·
+        <span style="color:var(--red)">✗ ${failCount} missing</span>
+      </div>
+    </div>
+    <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);text-align:right">
+      ${total} headers<br>evaluated
+    </div>
+  `;
+  resultList.appendChild(summary);
+
+  // ── HEADER ITEMS ──
+  items.forEach(function({ h, value, status, message, icon }) {
+    const item = document.createElement('div');
+    item.className = 'result-item ' + status;
+    item.innerHTML = `
+      <span>${icon}</span>
+      <div style="flex:1">
+        <div class="label">${h.name}</div>
+        ${value
+          ? `<div class="detail" style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);margin-bottom:3px;word-break:break-all">${value}</div>`
+          : ''}
+        <div class="detail">${message}</div>
+      </div>
+    `;
+    resultList.appendChild(item);
+  });
 }
