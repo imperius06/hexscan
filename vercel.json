@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/((?!api|_next|static|css|js|assets|images|fonts|favicon.ico).*)",
+      "source": "/tools/:slug",
       "destination": "/index.html"
     }
   ],
