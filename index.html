@@ -73,18 +73,69 @@
     <div class="hero-badge">Free · No login · No tracking</div>
     <h1 class="hero-title">Security tools<br /><em>that actually work</em></h1>
     <p class="hero-subtitle">8 professional tools for developers, pentesters, and anyone who cares about security.</p>
-    <div class="hero-tools-grid">
-      <!-- CAMBIO: data-hero-slug en cada chip. El router intercepta el click,
-           actualiza la URL a /tools/slug y hace scroll al section. -->
-      <a href="/tools/password-generator" class="hero-chip" data-hero-slug="password-generator">🔑 Password Gen</a>
-      <a href="/tools/breach-checker"     class="hero-chip" data-hero-slug="breach-checker">🔍 Breach Check</a>
-      <a href="/tools/subdomain-recon"    class="hero-chip" data-hero-slug="subdomain-recon">🎯 Subdomain Recon</a>
-      <a href="/tools/ip-analyzer"        class="hero-chip" data-hero-slug="ip-analyzer">🌐 IP Analyzer</a>
-      <a href="/tools/http-headers"       class="hero-chip" data-hero-slug="http-headers">🛡️ HTTP Headers</a>
-      <a href="/tools/exposure-check"     class="hero-chip" data-hero-slug="exposure-check">🕵️ Exposure Check</a>
-      <a href="/tools/csp-generator"      class="hero-chip" data-hero-slug="csp-generator">📋 CSP Generator</a>
-      <a href="/tools/base64-jwt"         class="hero-chip" data-hero-slug="base64-jwt">🔄 Base64 / JWT</a>
-    </div>
+    <div class="hero-chips-container">
+  
+  <a href="/tools/password-generator" class="hero-chip" data-hero-slug="password-generator">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="chip-icon">
+      <path fill-rule="evenodd" d="M8 7a5 5 0 1 1 3.61 4.804l-1.903 1.903A1 1 0 0 1 9 14H8v1a1 1 0 0 1-1 1H6v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-2a1 1 0 0 1 .293-.707L4.804 10.39A5.002 5.002 0 0 1 8 7Zm2 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" clip-rule="evenodd" />
+    </svg>
+    Password Gen
+  </a>
+
+  <a href="/tools/breach-checker" class="hero-chip" data-hero-slug="breach-checker">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="chip-icon">
+      <path fill-rule="evenodd" d="M10.339 2.237a.532.532 0 0 0-.678 0 11.947 11.947 0 0 1-7.078 2.75.5.5 0 0 0-.479.425A12.11 12.11 0 0 0 2 7c0 5.163 3.46 9.521 8 10.888 4.54-1.367 8-5.725 8-10.888a12.11 12.11 0 0 0-.104-1.588.5.5 0 0 0-.479-.425 11.947 11.947 0 0 1-7.078-2.75ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 6a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z" clip-rule="evenodd" />
+    </svg>
+    Breach Check
+  </a>
+
+  <a href="/tools/subdomain-recon" class="hero-chip" data-hero-slug="subdomain-recon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="chip-icon">
+      <path d="M2 4.25A2.25 2.25 0 0 1 4.25 2h11.5A2.25 2.25 0 0 1 18 4.25v.853a.75.75 0 0 1-.75.75h-14.5a.75.75 0 0 1-.75-.75v-.853Z" />
+      <path d="M18 7.353a.75.75 0 0 0-.75-.75h-14.5a.75.75 0 0 0-.75.75v3.397a2.25 2.25 0 0 0 2.25 2.25h11.5a2.25 2.25 0 0 0 2.25-2.25V7.353ZM13.5 9a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Zm-3 0a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Z" />
+      <path d="M18 14.853a.75.75 0 0 0-.75-.75h-14.5a.75.75 0 0 0-.75.75v.897A2.25 2.25 0 0 0 4.25 18h11.5a2.25 2.25 0 0 0 2.25-2.25v-.897ZM13.5 16.5a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Zm-3 0a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Z" />
+    </svg>
+    Subdomain Recon
+  </a>
+
+  <a href="/tools/ip-analyzer" class="hero-chip" data-hero-slug="ip-analyzer">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="chip-icon">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM4.332 8.027a6.012 6.012 0 0 1 1.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 0 1 9 7.5V8a2 2 0 0 0 2 2h.5a.5.5 0 0 1 .5.5v.75a.75.75 0 0 0 1.5 0v-1.5a3 3 0 0 0-3-3h-.51l-.103-.309a.75.75 0 0 0-1.422.474l.104.312a1.506 1.506 0 0 0-.618.307 3.008 3.008 0 0 0-1.031 4.333 1.5 1.5 0 0 1-.812 2.277 6.017 6.017 0 0 1-3.39-3.827Zm11.42 2.09a6.018 6.018 0 0 1-4.723 5.38 1.5 1.5 0 0 0-.814-1.247A3.507 3.507 0 0 0 9.013 11.2l-.119-.356a.5.5 0 0 1 .447-.644l.386-.023a1.5 1.5 0 0 0 1.274-.83l.209-.398a.5.5 0 0 1 .69-.213l.471.255a3 3 0 0 0 3.888-1.126l.062-.1a6.029 6.029 0 0 1 .43 2.352Z" clip-rule="evenodd" />
+    </svg>
+    IP Analyzer
+  </a>
+
+  <a href="/tools/http-headers" class="hero-chip" data-hero-slug="http-headers">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="chip-icon">
+      <path fill-rule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v11.5A2.25 2.25 0 0 0 4.25 18h11.5A2.25 2.25 0 0 0 18 15.75V4.25A2.25 2.25 0 0 0 15.75 2H4.25Zm4.03 6.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06l2.25-2.25a.75.75 0 0 0 0-1.06L8.28 8.22ZM11.25 12a.75.75 0 0 1 .75-.75h2.25a.75.75 0 0 1 0 1.5H12a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+    </svg>
+    HTTP Headers
+  </a>
+
+  <a href="/tools/exposure-check" class="hero-chip" data-hero-slug="exposure-check">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="chip-icon">
+      <path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+      <path fill-rule="evenodd" d="M.664 10.59a1.651 1.651 0 0 1 0-1.186A10.004 10.004 0 0 1 10 3c4.257 0 7.893 2.66 9.336 6.41.147.381.146.804 0 1.186A10.004 10.004 0 0 1 10 17c-4.257 0-7.893-2.66-9.336-6.41ZM14 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" clip-rule="evenodd" />
+    </svg>
+    Exposure Check
+  </a>
+
+  <a href="/tools/csp-generator" class="hero-chip" data-hero-slug="csp-generator">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="chip-icon">
+      <path fill-rule="evenodd" d="M15.988 3.012A2.25 2.25 0 0 1 18 5.25v9.5A2.25 2.25 0 0 1 15.75 17H4.25A2.25 2.25 0 0 1 2 14.75v-9.5a2.25 2.25 0 0 1 2.25-2.25h1.5l.067-.067A2.25 2.25 0 0 1 7.414 2h5.172a2.25 2.25 0 0 1 1.586.657l.066.066h1.75Zm-10.238 3a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm0 3a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm0 3a.75.75 0 0 0 0 1.5h5.5a.75.75 0 0 0 0-1.5h-5.5Z" clip-rule="evenodd" />
+    </svg>
+    CSP Generator
+  </a>
+
+  <a href="/tools/base64-jwt" class="hero-chip" data-hero-slug="base64-jwt">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="chip-icon">
+      <path d="m11.47 3.97 1.53 1.53-1.53 1.53-.53-.53.623-.62H8.25a.75.75 0 0 0 0 1.5h.5a.75.75 0 0 1 0 1.5h-.5A2.25 2.25 0 0 1 6 6.75V6.62l-.62.62-.53-.53L6.38 5.18a.75.75 0 0 1 1.06 0L8.97 6.71l-.53.53-.623-.62V6.75c0 .414.336.75.75.75h2.317l-.623.62.53.53 1.53-1.53a.75.75 0 0 0 0-1.06l-1.53-1.53-.53.53Zm-2.94 8.25-1.53 1.53 1.53 1.53.53-.53-.623-.62h2.317a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 0 0 1.5h.5a2.25 2.25 0 0 0 2.25-2.25v-.13l.62.62.53-.53-1.53-1.53a.75.75 0 0 0-1.06 0l-1.53 1.53.53.53.623-.62v.13c0 .414-.336.75-.75.75H8.713l.623-.62-.53-.53-1.53 1.53a.75.75 0 0 0 0 1.06l1.53 1.53.53-.53Z" />
+      <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-1.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z" clip-rule="evenodd" />
+    </svg>
+    Base64 / JWT
+  </a>
+
+</div>
   </div>
   <div class="hero-grid-bg"></div>
 </section>
