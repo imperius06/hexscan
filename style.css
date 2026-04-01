@@ -233,6 +233,17 @@ body::before {
   justify-content: center;
   animation: fadeDown 0.5s 0.3s ease both;
 }
+.tool-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-key {
+  width: 22px;
+  height: 22px;
+  color: var(--primary);
+}
 
 .hero-chip {
   background: var(--bg3);
