@@ -47,33 +47,60 @@
 </header>
 
 <main class="container tools-container" style="max-width:820px;">
-  <a href="../index.html" class="back-link">← All tools</a>
+  <a href="../index.html" class="back-link" style="text-decoration: none; color: var(--text-muted); font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 32px; transition: color 0.2s;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 18px; height: 18px;">
+      <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
+    </svg>
+    All tools
+  </a>
 
   <div style="margin-bottom:32px;">
-    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">🛡️ Tool 05 — Web Security</div>
-    <h1 style="font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:10px;">HTTP Header <span style="color:var(--accent);">Analyzer</span></h1>
-    <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Scan any URL or paste response headers to get a full security audit. Identifies missing, weak, or misconfigured security headers.</p>
+    <div style="display: flex; align-items: center; gap: 10px; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:10px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 18px; height: 18px; flex-shrink: 0;">
+        <path fill-rule="evenodd" d="M9.661 2.237a.531.531 0 0 1 .678 0 11.947 11.947 0 0 0 3.07 2.145 12.454 12.454 0 0 0 3.31.743.592.592 0 0 1 .53.589 12.183 12.183 0 0 1-2.477 7.41 12.386 12.386 0 0 1-4.89 3.86.502.502 0 0 1-.364 0 12.386 12.386 0 0 1-4.89-3.86 12.183 12.183 0 0 1-2.477-7.41.592.592 0 0 1 .53-.589 12.454 12.454 0 0 0 3.31-.743 11.947 11.947 0 0 0 3.07-2.145ZM11.83 8.33a.75.75 0 0 0-1.06-1.06l-2.72 2.72-1.22-1.22a.75.75 0 1 0-1.06 1.06l1.75 1.75a.75.75 0 0 0 1.06 0l3.25-3.25Z" clip-rule="evenodd" />
+      </svg>
+      <span>Tool 05 — Web Security</span>
+    </div>
+    <h1 style="font-size:2rem; font-weight:700; text-transform:uppercase; margin-bottom:10px; font-family: var(--font-display); color: var(--text);">HTTP Header <span style="color:var(--accent);">Analyzer</span></h1>
+    <p style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted); line-height:1.7;">Scan any URL or paste response headers to get a full security audit. Identifies missing, weak, or misconfigured security headers.</p>
   </div>
 
-  <!-- TOOL -->
   <section class="tool-card" style="margin-bottom:40px;">
-    <div class="tool-header">
-      <span class="tool-icon">🛡️</span>
+    <div class="tool-header" style="display: flex; align-items: flex-start; gap: 16px;">
+      <span class="tool-icon" style="color: var(--accent);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 24px; height: 24px;">
+          <path fill-rule="evenodd" d="M9.661 2.237a.531.531 0 0 1 .678 0 11.947 11.947 0 0 0 3.07 2.145 12.454 12.454 0 0 0 3.31.743.592.592 0 0 1 .53.589 12.183 12.183 0 0 1-2.477 7.41 12.386 12.386 0 0 1-4.89 3.86.502.502 0 0 1-.364 0 12.386 12.386 0 0 1-4.89-3.86 12.183 12.183 0 0 1-2.477-7.41.592.592 0 0 1 .53-.589 12.454 12.454 0 0 0 3.31-.743 11.947 11.947 0 0 0 3.07-2.145ZM11.83 8.33a.75.75 0 0 0-1.06-1.06l-2.72 2.72-1.22-1.22a.75.75 0 1 0-1.06 1.06l1.75 1.75a.75.75 0 0 0 1.06 0l3.25-3.25Z" clip-rule="evenodd" />
+        </svg>
+      </span>
       <div>
-        <h2 class="tool-title">HTTP Header Analyzer</h2>
+        <h2 class="tool-title" style="margin: 0;">HTTP Header Analyzer</h2>
         <p class="tool-desc">Scan any URL or paste headers to get a full security audit.</p>
       </div>
     </div>
     <div class="tool-body">
-      <div class="input-row" style="margin-bottom:14px">
-        <input type="text" id="scan-url" class="text-input" placeholder="https://example.com" />
-        <button class="btn-primary" style="margin-top:0" onclick="scanURL()">⚡ Live Scan</button>
+      <div class="input-row" style="margin-bottom:14px; display: flex; gap: 12px; align-items: stretch;">
+        <input type="text" id="scan-url" class="text-input" placeholder="https://example.com" style="flex: 1;" />
+        <button class="btn-primary" style="margin-top:0; display: flex; align-items: center; gap: 10px;" onclick="scanURL()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px;">
+            <path d="M11.983 1.907a.75.75 0 0 0-1.292-.657l-7 9.5a.75.75 0 0 0 .608 1.198h3.19l-1.47 4.043a.75.75 0 0 0 1.292.657l7-9.5a.75.75 0 0 0-.608-1.198h-3.19l1.47-4.043Z" />
+          </svg>
+          Live Scan
+        </button>
       </div>
+      
       <textarea id="headers-input" class="textarea tall" placeholder="Or paste HTTP response headers manually...&#10;&#10;Example:&#10;Content-Type: text/html&#10;X-Frame-Options: DENY&#10;Strict-Transport-Security: max-age=31536000"></textarea>
-      <button class="btn-primary" onclick="analyzeHeaders()">Analyze Headers</button>
-      <div id="headers-result" class="result-list hidden"></div>
+      
+      <button class="btn-primary" style="display: flex; align-items: center; gap: 10px; margin-top: 10px;" onclick="analyzeHeaders()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px;">
+          <path fill-rule="evenodd" d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75ZM2 10a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+        </svg>
+        Analyze Headers
+      </button>
+
+      <div id="headers-result" class="result-list hidden" style="margin-top: 20px;"></div>
     </div>
   </section>
+
 
   <!-- GUIDE -->
   <div class="guide-section">
