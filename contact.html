@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — HexScan</title>
+<meta name="description" content="Get in touch with the HexScan team. Report bugs, suggest new security tools, or ask questions about our free pentesting and developer tools." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://hexscan-tools.vercel.app/contact.html" />
+<meta property="og:title" content="Contact — HexScan" />
+<meta property="og:description" content="Reach out to the HexScan team — bug reports, feature requests, and general questions welcome." />
+<meta property="og:url" content="https://hexscan-tools.vercel.app/contact.html" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3698493513053471" crossorigin="anonymous"></script>
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+  .contact-card { padding: 28px; background: var(--bg2); border: 1px solid var(--border); border-left: 2px solid var(--accent); transition: border-color 0.2s; }
+  .contact-card:hover { border-left-color: var(--accent); border-color: rgba(255,32,32,0.3); }
+  .contact-card-icon { font-size: 1.6rem; margin-bottom: 14px; }
+  .contact-card-title { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .contact-card-desc { font-family: var(--font-mono); font-size: 0.83rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+  .contact-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); text-decoration: none; border: 1px solid rgba(255,32,32,0.3); padding: 8px 16px; transition: all 0.2s; }
+  .contact-link:hover { background: rgba(255,32,32,0.08); border-color: var(--accent); }
+  .faq-item { padding: 24px 28px; background: var(--bg2); border: 1px solid var(--border); margin-bottom: 12px; }
+  .faq-q { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text); font-weight: 600; margin-bottom: 10px; }
+  .faq-a { font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; }
+  .faq-a a { color: var(--accent); text-decoration: none; }
+  @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">Hex<strong>Scan</strong></span>
+    </div>
+    <nav class="nav">
+      <a href="index.html">← Back to Tools</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container" style="max-width:780px; padding-top:60px; padding-bottom:80px;">
+
+  <div style="margin-bottom:48px;">
+    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">▶ Contact</div>
+    <h1 style="font-size:2.4rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:16px;">
+      Get in <span style="color:var(--accent);">touch.</span>
+    </h1>
+    <p style="color:var(--text-muted);font-family:var(--font-mono);font-size:0.88rem;line-height:1.8;max-width:580px;">
+      HexScan is maintained by a solo developer. Response times are usually within 24–48 hours.
+      Bug reports and tool suggestions are especially welcome.
+    </p>
+  </div>
+
+  <!-- Contact options grid -->
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-card-icon">🐛</div>
+      <div class="contact-card-title">▶ Report a bug</div>
+      <p class="contact-card-desc">Found something broken? A tool that returns wrong results, a broken link, or a UI issue? Open a GitHub issue and I'll fix it fast.</p>
+      <a class="contact-link" href="https://github.com/imperius06/hexscan/issues" target="_blank">→ Open GitHub issue</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">💡</div>
+      <div class="contact-card-title">▶ Suggest a tool</div>
+      <p class="contact-card-desc">Missing a security tool you use daily? Suggest it via GitHub Discussions or email. Good ideas get built — HexScan started as suggestions too.</p>
+      <a class="contact-link" href="https://github.com/imperius06/hexscan/discussions" target="_blank">→ GitHub Discussions</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">✉️</div>
+      <div class="contact-card-title">▶ Email</div>
+      <p class="contact-card-desc">For anything that doesn't fit a GitHub issue — API questions, partnership inquiries, or general feedback. No spam, no newsletters.</p>
+      <a class="contact-link" href="mailto:draeneills@gmail.com">→ draeneills@gmail.com</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">❤️</div>
+      <div class="contact-card-title">▶ Support the project</div>
+      <p class="contact-card-desc">All tools are free and stay free. If HexScan saved you time, a small donation helps keep the APIs running and more tools coming.</p>
+      <a class="contact-link" href="https://www.paypal.com/paypalme/imperius06" target="_blank">→ Donate via PayPal</a>
+    </div>
+  </div>
+
+  <!-- FAQ section -->
+  <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;">▶ Frequently asked questions</div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is HexScan completely free?</div>
+    <p class="faq-a">Yes. All 8 tools are free, require no login, and collect no personal data. The project is funded by optional donations and display ads. There is no premium tier.</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Do you store the data I enter into the tools?</div>
+    <p class="faq-a">No. Tools like the Password Generator and Base64 Decoder run entirely in your browser — nothing is sent to any server. The Breach Checker and IP Analyzer query third-party APIs (LeakCheck, ip-api) but HexScan does not log or store those queries. See the <a href="privacy.html">Privacy Policy</a> for full details.</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Can I use these tools on systems I don't own?</div>
+    <p class="faq-a">No. Tools like the Directory Exposure Checker and Subdomain Recon are for authorized testing only. Using them on systems you don't own or have written permission to test is illegal in most jurisdictions. Always get permission first. See <a href="terms.html">Terms of Use</a>.</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How do I request a new tool?</div>
+    <p class="faq-a">Open a request on <a href="https://github.com/imperius06/hexscan/discussions" target="_blank">GitHub Discussions</a> or send an email. Describe the tool, what it does, and why it would be useful for developers or security researchers. Good suggestions with clear use cases get prioritized.</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is the source code available?</div>
+    <p class="faq-a">Yes. HexScan is open source. You can view, fork, or contribute to the code on <a href="https://github.com/imperius06/hexscan" target="_blank">GitHub</a>. Pull requests are welcome.</p>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>HexScan — Free security tools. No login. No tracking. Open source.</p>
+    <p class="footer-links">
+      <a href="index.html">Tools</a> ·
+      <a href="about.html">About</a> ·
+      <a href="contact.html">Contact</a> ·
+      <a href="privacy.html">Privacy Policy</a> ·
+      <a href="terms.html">Terms of Use</a> ·
+      <a href="https://www.paypal.com/paypalme/imperius06" target="_blank">❤️ Donate</a>
+    </p>
+  </div>
+</footer>
+</body>
+</html>
