@@ -162,5 +162,7 @@ function _iconClose() {
 
 /* ─── INIT ──────────────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function () {
-  generatePassword();
+  if (typeof generatePassword === 'function') {
+    generatePassword();
+  }
 });
