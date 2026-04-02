@@ -1,121 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — HexScan</title>
-  <meta name="description" content="HexScan is a free collection of online security tools built by imperius, an independent developer and security researcher." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://hexscan-tools.vercel.app/about.html" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="About — HexScan" />
-  <meta property="og:description" content="HexScan is a free collection of online security tools built by imperius, an independent developer and security researcher." />
-  <meta property="og:url" content="https://hexscan-tools.vercel.app/about.html" />
-  <meta property="og:type" content="website" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-
-  <!-- Styles & Icon -->
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-
-  <!-- Ads -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3698493513053471" crossorigin="anonymous"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About HexScan — Free Security Tools for Developers & Pentesters</title>
+<meta name="description" content="HexScan is a free, open-source collection of 8 professional security tools built for developers and pentesters. No login, no tracking, no paywalls. Learn about the project, its mission, and the tools inside." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://hexscan-tools.vercel.app/about.html" />
+<meta property="og:title" content="About HexScan — Free Security Tools" />
+<meta property="og:description" content="HexScan is a free collection of online security tools built by imperius, an independent developer and security researcher." />
+<meta property="og:url" content="https://hexscan-tools.vercel.app/about.html" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3698493513053471" crossorigin="anonymous"></script>
+<style>
+  .about-section { padding: 28px; background: var(--bg2); border: 1px solid var(--border); border-left: 2px solid var(--accent); margin-bottom: 20px; }
+  .about-section h2 { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .about-section p { font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 12px; }
+  .about-section p:last-child { margin-bottom: 0; }
+  .tool-grid-about { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+  .tool-chip-about { font-family: var(--font-mono); font-size: 0.82rem; padding: 12px 16px; background: var(--bg3); border: 1px solid var(--border); color: var(--text); text-decoration: none; transition: border-color 0.2s; display: block; }
+  .tool-chip-about:hover { border-color: rgba(255,32,32,0.4); color: var(--accent); }
+  .stat-row { display: flex; gap: 16px; margin-top: 8px; flex-wrap: wrap; }
+  .stat-box { padding: 16px 20px; background: var(--bg3); border: 1px solid var(--border); flex: 1; min-width: 120px; }
+  .stat-num { font-size: 2rem; font-weight: 700; color: var(--accent); font-family: var(--font-sans); display: block; line-height: 1; }
+  .stat-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; display: block; }
+  .timeline-item { display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); min-width: 80px; padding-top: 2px; }
+  .timeline-text { font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  @media (max-width: 600px) { .tool-grid-about { grid-template-columns: 1fr; } .stat-row { flex-direction: column; } }
+</style>
 </head>
 <body>
-
-  <header class="site-header">
-    <div class="container">
-      <div class="logo">
-        <span class="logo-icon">⬡</span>
-        <span class="logo-text">Hex<strong>Scan</strong></span>
-      </div>
-      <nav class="nav">
-        <a href="index.html">← Back to Tools</a>
-      </nav>
+<header class="site-header">
+  <div class="container">
+    <div class="logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">Hex<strong>Scan</strong></span>
     </div>
-  </header>
+    <nav class="nav">
+      <a href="index.html">← Back to Tools</a>
+    </nav>
+  </div>
+</header>
 
-  <main class="container" style="max-width:720px; padding-top:60px; padding-bottom:80px;">
+<main class="container" style="max-width:760px; padding-top:60px; padding-bottom:80px;">
 
-    <!-- HERO -->
-    <div style="margin-bottom:48px;">
-      <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">▶ About HexScan</div>
-      <h1 style="font-size:2.5rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:16px;">
-        Built by hackers,<br/><span style="color:var(--accent);">for everyone.</span>
-      </h1>
-      <p style="color:var(--text-muted);font-family:var(--font-mono);font-size:0.88rem;line-height:1.8;max-width:560px;">
-        HexScan is a free collection of professional security tools. No login. No tracking. No paywalls. Just tools that work.
-      </p>
+  <!-- HERO -->
+  <div style="margin-bottom:48px;">
+    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">▶ About HexScan</div>
+    <h1 style="font-size:2.5rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:16px;">
+      Built for hackers,<br/><span style="color:var(--accent);">free for everyone.</span>
+    </h1>
+    <p style="color:var(--text-muted);font-family:var(--font-mono);font-size:0.88rem;line-height:1.8;max-width:600px;">
+      HexScan is a collection of professional-grade security tools that run entirely in the browser.
+      No account required. No data collection. No paywalls. Just tools that work.
+    </p>
+    <div class="stat-row" style="margin-top:24px;">
+      <div class="stat-box"><span class="stat-num">8</span><span class="stat-label">Free tools</span></div>
+      <div class="stat-box"><span class="stat-num">0</span><span class="stat-label">Logins required</span></div>
+      <div class="stat-box"><span class="stat-num">100%</span><span class="stat-label">Open source</span></div>
+      <div class="stat-box"><span class="stat-num">$0</span><span class="stat-label">Forever free</span></div>
     </div>
+  </div>
 
-    <!-- ABOUT THE PROJECT -->
-    <section style="margin-bottom:40px;padding:28px;background:var(--bg2);border:1px solid var(--border);border-left:2px solid var(--accent);">
-      <h2 style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-family:var(--font-mono);margin-bottom:16px;">▶ The Project</h2>
-      <p style="color:var(--text-muted);font-family:var(--font-mono);font-size:0.85rem;line-height:1.8;">
-        HexScan started as a personal toolkit — a set of tools I kept building and rebuilding for my own security work. Password generators, header analyzers, breach checkers. Things I used daily but always had to jump between 5 different sites to access.
-      </p>
-      <br/>
-      <p style="color:var(--text-muted);font-family:var(--font-mono);font-size:0.85rem;line-height:1.8;">
-        So I built them all in one place, made them free, and put them online. That's HexScan.
-      </p>
-    </section>
+  <!-- THE PROBLEM -->
+  <div class="about-section">
+    <h2>▶ Why HexScan exists</h2>
+    <p>Security tools are scattered across dozens of different websites. Some require registration. Others are behind paywalls. Many are cluttered with ads that slow the page to a crawl, or redirect you to sketchy third-party services before you can run a single query.</p>
+    <p>Every developer who does any kind of security work — whether that's checking a password generator before deploying it, verifying HTTP headers on a production server, or auditing a site for exposed directories — needs a fast, clean, reliable toolkit they can trust. That toolkit shouldn't require a subscription.</p>
+    <p>HexScan exists to solve this. One URL. Eight tools. No friction. Built by a developer who needed exactly this and couldn't find it anywhere.</p>
+  </div>
 
-    <!-- ABOUT THE DEVELOPER -->
-    <section style="margin-bottom:40px;padding:28px;background:var(--bg2);border:1px solid var(--border);border-left:2px solid var(--accent);">
-      <h2 style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-family:var(--font-mono);margin-bottom:20px;">▶ The Developer</h2>
-      <div style="display:flex;gap:20px;align-items:flex-start;">
-        <div style="width:56px;height:56px;background:rgba(255,32,32,0.1);border:1px solid rgba(255,32,32,0.3);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;">⬡</div>
-        <div>
-          <div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">imperius</div>
-          <div style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent);margin-bottom:12px;">Independent Developer · Security Researcher</div>
-          <p style="color:var(--text-muted);font-family:var(--font-mono);font-size:0.83rem;line-height:1.8;">
-            Independent developer with a focus on web security and offensive tooling. I build tools, hunt bugs, and occasionally break things (with permission). HexScan is one of several projects I maintain.
-          </p>
-        </div>
-      </div>
-    </section>
+  <!-- WHO IT'S FOR -->
+  <div class="about-section">
+    <h2>▶ Who is HexScan for?</h2>
+    <p>HexScan was designed with three types of users in mind:</p>
+    <p><strong style="color:var(--text)">Developers</strong> — who need to quickly verify that their web applications send the right security headers, generate cryptographically strong passwords for testing environments, decode JWT tokens during API debugging, or encode/decode Base64 data without installing a local tool.</p>
+    <p><strong style="color:var(--text)">Security researchers and pentesters</strong> — who need fast passive reconnaissance tools (subdomain enumeration, IP analysis, directory exposure scanning) during the early stages of an authorized engagement, without spinning up a full Kali environment for a quick check.</p>
+    <p><strong style="color:var(--text)">Privacy-conscious users</strong> — who want to check whether their email appeared in a known data breach, or verify what information their IP address exposes to websites they visit.</p>
+    <p>All tools are appropriate for any level — beginners can use them without any technical knowledge, while professionals will appreciate the depth of results and the absence of unnecessary friction.</p>
+  </div>
 
-    <!-- TOOLS LIST -->
-    <section style="margin-bottom:40px;padding:28px;background:var(--bg2);border:1px solid var(--border);border-left:2px solid var(--accent);">
-      <h2 style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-family:var(--font-mono);margin-bottom:20px;">▶ What's Inside</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-        <div style="font-family:var(--font-mono);font-size:0.82rem;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);">🔑 Password Generator</div>
-        <div style="font-family:var(--font-mono);font-size:0.82rem;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);">🔍 Breach Checker</div>
-        <div style="font-family:var(--font-mono);font-size:0.82rem;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);">🎯 Subdomain Recon</div>
-        <div style="font-family:var(--font-mono);font-size:0.82rem;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);">🌐 IP Analyzer</div>
-        <div style="font-family:var(--font-mono);font-size:0.82rem;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);">🛡️ HTTP Header Analyzer</div>
-        <div style="font-family:var(--font-mono);font-size:0.82rem;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);">🕵️ Directory Exposure</div>
-        <div style="font-family:var(--font-mono);font-size:0.82rem;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);">📋 CSP Generator</div>
-        <div style="font-family:var(--font-mono);font-size:0.82rem;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);">🔄 Base64 & JWT</div>
-      </div>
-    </section>
-
-    <!-- SUPPORT -->
-    <section style="padding:28px;background:var(--bg2);border:1px solid var(--border);border-left:2px solid var(--accent);">
-      <h2 style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-family:var(--font-mono);margin-bottom:16px;">▶ Support the Project</h2>
-      <p style="color:var(--text-muted);font-family:var(--font-mono);font-size:0.83rem;line-height:1.8;margin-bottom:20px;">
-        All tools are free and will stay free. If HexScan saved you time, consider supporting to keep it running, pay for better APIs, and add more tools.
-      </p>
-      <a href="https://www.paypal.com/paypalme/imperius06" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;background:#003087;color:#fff;text-decoration:none;font-family:var(--font-mono);font-size:0.82rem;letter-spacing:1px;text-transform:uppercase;transition:all 0.2s;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z"/></svg>
-        Donate via PayPal
-      </a>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>HexScan — Free security tools. No login. No tracking. Open source.</p>
-      <p class="footer-links">
-        <a href="index.html">Tools</a> · <a href="about.html">About</a> · <a href="privacy.html">Privacy Policy</a> · <a href="https://www.paypal.com/paypalme/imperius06" target="_blank">❤️ Donate</a>
-      </p>
+  <!-- THE TOOLS -->
+  <div class="about-section">
+    <h2>▶ The 8 tools inside HexScan</h2>
+    <p>Each tool is self-contained, works client-side where possible, and is built for real-world use — not just as a demo.</p>
+    <div class="tool-grid-about">
+      <a href="tools/password-generator.html" class="tool-chip-about"> Password Generator</a>
+      <a href="tools/breach-checker.html" class="tool-chip-about"> Breach Checker</a>
+      <a href="tools/subdomain-recon.html" class="tool-chip-about"> Subdomain Recon</a>
+      <a href="tools/ip-analyzer.html" class="tool-chip-about">IP Analyzer</a>
+      <a href="tools/http-header-analyzer.html" class="tool-chip-about"> HTTP Header Analyzer</a>
+      <a href="tools/directory-exposure.html" class="tool-chip-about">🕵️ Directory Exposure</a>
+      <a href="tools/csp-generator.html" class="tool-chip-about"> CSP Generator</a>
+      <a href="tools/base64-jwt.html" class="tool-chip-about"> Base64 &amp; JWT Decoder</a>
     </div>
-  </footer>
+  </div>
 
+  <!-- HOW IT WORKS -->
+  <div class="about-section">
+    <h2>▶ How the tools work — technical overview</h2>
+    <p>Most HexScan tools run entirely in the browser using vanilla JavaScript. The Password Generator, Base64/JWT Decoder, and CSP Generator perform all computation locally — no network requests are made, and nothing you type leaves your device.</p>
+    <p>Tools that require external data — the Breach Checker, IP Analyzer, and Subdomain Recon — query public APIs (LeakCheck, crt.sh, HackerTarget, ip-api.com). These APIs are called directly from your browser. HexScan does not proxy these requests through its own servers, which means HexScan never sees the queries you make.</p>
+    <p>The HTTP Header Analyzer and Directory Exposure Checker use a lightweight Cloudflare Worker as a proxy, because browsers cannot make direct cross-origin requests to arbitrary URLs. The Cloudflare Worker fetches the target URL and returns the response headers — it does not log or store the requests.</p>
+    <p>The entire codebase is public on <a href="https://github.com/imperius06/hexscan" target="_blank" style="color:var(--accent)">GitHub</a>. You are welcome to inspect, fork, or run it locally.</p>
+  </div>
+
+  <!-- PRIVACY COMMITMENT -->
+  <div class="about-section">
+    <h2>▶ Privacy commitment</h2>
+    <p>HexScan does not use tracking cookies, fingerprinting, or behavioral analytics. There is no user account system, which means there is no database of user activity. The site uses Cloudflare Web Analytics (cookieless, privacy-preserving) to measure basic page views — no personal data is collected.</p>
+    <p>Google AdSense is used to serve display ads. AdSense may set cookies for ad personalization. You can opt out of personalized advertising via Google's Ad Settings. See the full <a href="privacy.html" style="color:var(--accent)">Privacy Policy</a> for details.</p>
+  </div>
+
+  <!-- TIMELINE / ROADMAP -->
+  <div class="about-section">
+    <h2>▶ Project history</h2>
+    <div class="timeline-item">
+      <div class="timeline-date">2024 Q1</div>
+      <div class="timeline-text">Project started as a personal toolkit — password generator and header analyzer only.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2024 Q2</div>
+      <div class="timeline-text">Added Breach Checker (LeakCheck API), Base64/JWT Decoder, and CSP Generator. First public deployment on Vercel.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2024 Q3</div>
+      <div class="timeline-text">Added Subdomain Recon (crt.sh + HackerTarget), IP Analyzer, and Directory Exposure Checker. Reached 8 tools total.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2025</div>
+      <div class="timeline-text">Ongoing: performance improvements, API upgrades, new tool proposals under review. Source code open on GitHub.</div>
+    </div>
+  </div>
+
+  <!-- ABOUT THE DEV -->
+  <div class="about-section">
+    <h2>▶ The developer</h2>
+    <div style="display:flex;gap:20px;align-items:flex-start;">
+      <div style="width:56px;height:56px;background:rgba(255,32,32,0.1);border:1px solid rgba(255,32,32,0.3);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;">⬡</div>
+      <div>
+        <div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">imperius</div>
+        <div style="font-family:var(--font-mono);font-size:0.78rem;color:var(--accent);margin-bottom:12px;">Independent Developer · Security Researcher</div>
+        <p style="font-family:var(--font-mono);font-size:0.83rem;color:var(--text-muted);line-height:1.8;margin:0;">
+          Independent developer focused on web security, offensive tooling, and building things that are genuinely useful. HexScan is maintained as a side project — it's free, open source, and built with the same tools I use daily in my own security work. If a tool is missing that you need, open a request on GitHub.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPORT -->
+  <div class="about-section">
+    <h2>▶ Support the project</h2>
+    <p>All HexScan tools are free and will stay free. Running the project has real costs — Cloudflare Workers for API proxying, third-party API access fees, and time spent maintaining and improving tools. If HexScan has saved you time or helped with your work, consider supporting it:</p>
+    <a href="https://www.paypal.com/paypalme/imperius06" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;background:#003087;color:#fff;text-decoration:none;font-family:var(--font-mono);font-size:0.82rem;letter-spacing:1px;text-transform:uppercase;margin-top:8px;">
+      ❤️ Donate via PayPal
+    </a>
+    <p style="margin-top:16px;">You can also support by starring the <a href="https://github.com/imperius06/hexscan" target="_blank" style="color:var(--accent)">GitHub repository</a>, sharing HexScan with your team, or contributing code.</p>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>HexScan — Free security tools. No login. No tracking. Open source.</p>
+    <p class="footer-links">
+      <a href="index.html">Tools</a> ·
+      <a href="about.html">About</a> ·
+      <a href="contact.html">Contact</a> ·
+      <a href="privacy.html">Privacy Policy</a> ·
+      <a href="terms.html">Terms of Use</a> ·
+      <a href="https://github.com/imperius06/hexscan">GitHub</a> ·
+      <a href="https://www.paypal.com/paypalme/imperius06" target="_blank">❤️ Donate</a>
+    </p>
+  </div>
+</footer>
 </body>
 </html>
