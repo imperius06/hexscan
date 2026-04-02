@@ -51,28 +51,41 @@
   <a href="../index.html" class="back-link">← All tools</a>
 
   <div style="margin-bottom:32px;">
-    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">🌐 Tool 04 — Network & Recon</div>
-    <h1 style="font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:10px;">IP <span style="color:var(--accent);">Analyzer</span></h1>
-    <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Geolocation, ISP, reputation, open ports, and reverse DNS for any IP address.</p>
-  </div>
+    <div style="display: flex; align-items: center; gap: 10px; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:10px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px;">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM9.555 7.168A.75.75 0 0 1 10 8v.432c.546.108 1.011.455 1.259.954a.75.75 0 1 1-1.341.674.52.52 0 0 0-.418-.26V11a.5.5 0 0 0 .5.5H11a.75.75 0 0 1 0 1.5h-.5v.5a.75.75 0 0 1-1.5 0v-.5h-.25a.75.75 0 0 1 0-1.5h.25V9.45c-.47-.14-.858-.493-1.036-.937a.75.75 0 1 1 1.391-.563.5.5 0 0 0 .45-.282.75.75 0 0 1 .75-.5ZM10 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" />
+        </svg>
+        <span>Tool 04 — Network & Recon</span>
+    </div>
+    <h1 style="font-size:2rem; font-weight:700; text-transform:uppercase; margin-bottom:10px; font-family: var(--font-display); color: var(--text);">IP <span style="color:var(--accent);">Analyzer</span></h1>
+    <p style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted); line-height:1.7;">Geolocation, ISP, reputation, open ports, and reverse DNS for any IP address.</p>
+</div>
 
-  <!-- TOOL -->
-  <section class="tool-card" style="margin-bottom:40px;">
+<section class="tool-card" style="margin-bottom:40px;">
     <div class="tool-header">
-      <span class="tool-icon">🌐</span>
-      <div>
-        <h2 class="tool-title">IP Analyzer</h2>
-        <p class="tool-desc">Geolocation, reputation, open ports, and domains on any IP.</p>
-      </div>
+        <span class="tool-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 24px; height: 24px; color: var(--accent);">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM9.555 7.168A.75.75 0 0 1 10 8v.432c.546.108 1.011.455 1.259.954a.75.75 0 1 1-1.341.674.52.52 0 0 0-.418-.26V11a.5.5 0 0 0 .5.5H11a.75.75 0 0 1 0 1.5h-.5v.5a.75.75 0 0 1-1.5 0v-.5h-.25a.75.75 0 0 1 0-1.5h.25V9.45c-.47-.14-.858-.493-1.036-.937a.75.75 0 1 1 1.391-.563.5.5 0 0 0 .45-.282.75.75 0 0 1 .75-.5ZM10 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" />
+            </svg>
+        </span>
+        <div>
+            <h2 class="tool-title">IP Analyzer</h2>
+            <p class="tool-desc">Geolocation, reputation, open ports, and domains on any IP.</p>
+        </div>
     </div>
     <div class="tool-body">
-      <div class="input-row">
-        <input type="text" id="ip-input" class="text-input" placeholder="8.8.8.8" />
-        <button class="btn-primary" style="margin-top:0" onclick="analyzeIP()">🔍 Analyze</button>
-      </div>
-      <div id="ip-result" class="result-list hidden"></div>
+        <div class="input-row">
+            <input type="text" id="ip-input" class="text-input" placeholder="8.8.8.8" />
+            <button class="btn-primary" style="margin-top:0; display: flex; align-items: center; gap: 8px;" onclick="analyzeIP()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px;">
+                    <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
+                </svg>
+                Analyze
+            </button>
+        </div>
+        <div id="ip-result" class="result-list hidden"></div>
     </div>
-  </section>
+</section>
 
   <!-- GUIDE -->
   <div class="guide-section">
