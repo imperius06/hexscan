@@ -46,33 +46,58 @@
   </div>
 </header>
 
-<main class="container tools-container" style="max-width:820px;">
-  <a href="../index.html" class="back-link">← All tools</a>
+  <main class="container tools-container" style="max-width:820px;">
+  <a href="../index.html" class="back-link" style="text-decoration: none; color: var(--text-muted); font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 32px; transition: color 0.2s;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 18px; height: 18px;">
+      <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
+    </svg>
+    All tools
+  </a>
 
   <div style="margin-bottom:32px;">
-    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">🔍 Tool 02 — Privacy & Passwords</div>
-    <h1 style="font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:10px;">Email Breach <span style="color:var(--accent);">Checker</span></h1>
-    <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Check if your email address appeared in a known data breach. Uses the LeakCheck API. Your query is not stored by HexScan.</p>
+    <div style="display: flex; align-items: center; gap: 10px; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:10px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 18px; height: 18px; flex-shrink: 0;">
+        <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
+      </svg>
+      <span>Tool 02 — Privacy & Passwords</span>
+    </div>
+    <h1 style="font-size:2rem; font-weight:700; text-transform:uppercase; margin-bottom:10px; font-family: var(--font-display); color: var(--text);">Email Breach <span style="color:var(--accent);">Checker</span></h1>
+    <p style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted); line-height:1.7;">Check if your email address appeared in a known data breach. Uses the LeakCheck API. Your query is not stored by HexScan.</p>
   </div>
 
-  <!-- TOOL -->
   <section class="tool-card" style="margin-bottom:40px;">
-    <div class="tool-header">
-      <span class="tool-icon">🔍</span>
+    <div class="tool-header" style="display: flex; align-items: flex-start; gap: 16px;">
+      <span class="tool-icon" style="color: var(--accent);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 24px; height: 24px;">
+          <path fill-rule="evenodd" d="M10.338 1.59a.75.75 0 0 0-.676 0l-6.25 3a.75.75 0 0 0-.412.674v3.058a8.25 8.25 0 0 0 2.25 5.765 11.414 11.414 0 0 0 4.412 3.08.75.75 0 0 0 .576 0 11.414 11.414 0 0 0 4.412-3.08 8.25 8.25 0 0 0 2.25-5.765V5.264a.75.75 0 0 0-.412-.674l-6.25-3ZM10 7.5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 7.5ZM10 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" clip-rule="evenodd" />
+        </svg>
+      </span>
       <div>
-        <h2 class="tool-title">Breach Checker</h2>
+        <h2 class="tool-title" style="margin: 0;">Breach Checker</h2>
         <p class="tool-desc">Check if your email appeared in a known data breach.</p>
       </div>
     </div>
+    
     <div class="tool-body">
-      <div class="input-row">
-        <input type="email" id="breach-email" class="text-input" placeholder="you@example.com" />
-        <button class="btn-primary" style="margin-top:0" onclick="checkBreach()">Check</button>
+      <div class="input-row" style="display: flex; gap: 12px; align-items: stretch;">
+        <input type="email" id="breach-email" class="text-input" placeholder="you@example.com" style="flex: 1;" />
+        <button class="btn-primary" style="margin-top:0; display: flex; align-items: center; gap: 10px;" onclick="checkBreach()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px;">
+            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
+          </svg>
+          Check
+        </button>
       </div>
-      <div id="breach-result" class="result-box hidden"></div>
-      <p class="tool-note">Uses the <a href="https://leakcheck.io" target="_blank">LeakCheck</a> API. Your data is not stored.</p>
+      <div id="breach-result" class="result-box hidden" style="margin-top: 20px;"></div>
+      <p class="tool-note" style="display: flex; align-items: center; gap: 6px; margin-top: 15px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 14px; height: 14px; color: var(--text-muted);">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clip-rule="evenodd" />
+        </svg>
+        Uses the <a href="https://leakcheck.io" target="_blank" style="color: var(--accent); text-decoration: none;">LeakCheck</a> API. Your data is not stored.
+      </p>
     </div>
   </section>
+
 
   <!-- GUIDE -->
   <div class="guide-section">
