@@ -48,18 +48,31 @@
 </header>
 
 <main class="container tools-container" style="max-width:820px;">
-  <a href="../index.html" class="back-link">← All tools</a>
+  <a href="../index.html" class="back-link" style="text-decoration: none; color: var(--text-muted); font-size: 0.85rem; display: inline-flex; align-items: center; gap: 5px; margin-bottom: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px;">
+      <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
+    </svg>
+    All tools
+  </a>
 
   <div style="margin-bottom:32px;">
-    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">🎯 Tool 03 — Network & Recon</div>
-    <h1 style="font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:10px;">Subdomain <span style="color:var(--accent);">Recon</span></h1>
-    <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Discover subdomains using passive certificate transparency logs and public DNS datasets. Authorized testing only.</p>
+    <div style="display: flex; align-items: center; gap: 10px; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:10px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px;">
+        <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
+      </svg>
+      <span>Tool 03 — Network & Recon</span>
+    </div>
+    <h1 style="font-size:2rem; font-weight:700; text-transform:uppercase; margin-bottom:10px; font-family: var(--font-display);">Subdomain <span style="color:var(--accent);">Recon</span></h1>
+    <p style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted); line-height:1.7;">Discover subdomains using passive certificate transparency logs and public DNS datasets. Authorized testing only.</p>
   </div>
 
-  <!-- TOOL -->
   <section class="tool-card" style="margin-bottom:40px;">
     <div class="tool-header">
-      <span class="tool-icon">🎯</span>
+      <span class="tool-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 24px; height: 24px; color: var(--accent);">
+          <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
+        </svg>
+      </span>
       <div>
         <h2 class="tool-title">Subdomain Recon</h2>
         <p class="tool-desc">Discover subdomains using passive sources (crt.sh + HackerTarget).</p>
@@ -68,9 +81,19 @@
     <div class="tool-body">
       <div class="input-row">
         <input type="text" id="sub-domain" class="text-input" placeholder="example.com" />
-        <button class="btn-primary" style="margin-top:0" onclick="scanSubdomains()">🔍 Scan</button>
+        <button class="btn-primary" style="margin-top:0; display: flex; align-items: center; gap: 8px;" onclick="scanSubdomains()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px;">
+            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd" />
+          </svg>
+          Scan
+        </button>
       </div>
-      <p class="tool-note">⚠️ Passive recon only — queries public databases, no direct scanning.</p>
+      <p class="tool-note" style="display: flex; align-items: center; gap: 6px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 14px; height: 14px; color: var(--yellow);">
+          <path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.515 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" />
+        </svg>
+        Passive recon only — queries public databases, no direct scanning.
+      </p>
       <div id="sub-result" class="result-list hidden"></div>
     </div>
   </section>
