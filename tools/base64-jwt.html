@@ -59,39 +59,51 @@
     <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Encode or decode Base64 strings, or inspect any JWT token — all in your browser, nothing sent to any server.</p>
   </div>
 
-  <!-- TOOL -->
-  <section class="tool-card" style="margin-bottom:40px;">
+ <section class="tool-card" style="margin-bottom:40px;">
     <div class="tool-header">
-      <span class="tool-icon">🔄</span>
-      <div>
-        <h2 class="tool-title">Base64 &amp; JWT Decoder</h2>
-        <p class="tool-desc">Encode, decode Base64 or decode a JWT token instantly.</p>
-      </div>
+        <span class="tool-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="card-icon-svg">
+                <path fill-rule="evenodd" d="M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.982a.75.75 0 0 0-.75.75v4.25a.75.75 0 0 0 1.5 0v-2.432l.31.31a7 7 0 0 0 11.712-3.138.75.75 0 0 0-1.442-.405ZM4.688 8.576a5.5 5.5 0 0 1 9.201-2.466l.312.311h-2.433a.75.75 0 0 0 0 1.5h4.25a.75.75 0 0 0 .75-.75V2.75a.75.75 0 0 0-1.5 0v2.432l-.31-.31A7 7 0 0 0 3.246 8.01a.75.75 0 1 0 1.442.405Z" clip-rule="evenodd" />
+            </svg>
+        </span>
+        <div>
+            <h2 class="tool-title">Base64 &amp; JWT Decoder</h2>
+            <p class="tool-desc">Encode, decode Base64 or decode a JWT token instantly.</p>
+        </div>
     </div>
-    <div class="tool-body">
-      <div class="tabs">
-        <button class="tab active" onclick="switchTab(this,'b64-encode')">Encode</button>
-        <button class="tab" onclick="switchTab(this,'b64-decode')">Decode</button>
-        <button class="tab" onclick="switchTab(this,'jwt-decode')">JWT</button>
-      </div>
-      <div id="b64-encode" class="tab-panel active">
-        <textarea id="b64e-input" class="textarea" placeholder="Text to encode..."></textarea>
-        <button class="btn-primary" onclick="b64Encode()">Encode →</button>
-        <div class="output-box mt"><span id="b64e-output" class="mono small"></span><button class="copy-btn" onclick="copyText('b64e-output')">Copy</button></div>
-      </div>
-      <div id="b64-decode" class="tab-panel">
-        <textarea id="b64d-input" class="textarea" placeholder="Base64 to decode..."></textarea>
-        <button class="btn-primary" onclick="b64Decode()">Decode →</button>
-        <div class="output-box mt"><span id="b64d-output" class="mono small"></span><button class="copy-btn" onclick="copyText('b64d-output')">Copy</button></div>
-      </div>
-      <div id="jwt-decode" class="tab-panel">
-        <textarea id="jwt-input" class="textarea" placeholder="Paste JWT token..."></textarea>
-        <button class="btn-primary" onclick="decodeJWT()">Decode JWT →</button>
-        <pre id="jwt-output" class="code-output hidden"></pre>
-      </div>
-    </div>
-  </section>
 
+    <div class="tool-body">
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab(this,'b64-encode')">Encode</button>
+            <button class="tab" onclick="switchTab(this,'b64-decode')">Decode</button>
+            <button class="tab" onclick="switchTab(this,'jwt-decode')">JWT</button>
+        </div>
+
+        <div id="b64-encode" class="tab-panel active">
+            <textarea id="b64e-input" class="textarea" placeholder="Text to encode..."></textarea>
+            <button class="btn-primary" onclick="b64Encode()">Encode →</button>
+            <div class="output-box mt">
+                <span id="b64e-output" class="mono small"></span>
+                <button class="copy-btn" onclick="copyText('b64e-output')">Copy</button>
+            </div>
+        </div>
+
+        <div id="b64-decode" class="tab-panel">
+            <textarea id="b64d-input" class="textarea" placeholder="Base64 to decode..."></textarea>
+            <button class="btn-primary" onclick="b64Decode()">Decode →</button>
+            <div class="output-box mt">
+                <span id="b64d-output" class="mono small"></span>
+                <button class="copy-btn" onclick="copyText('b64d-output')">Copy</button>
+            </div>
+        </div>
+
+        <div id="jwt-decode" class="tab-panel">
+            <textarea id="jwt-input" class="textarea" placeholder="Paste JWT token..."></textarea>
+            <button class="btn-primary" onclick="decodeJWT()">Decode JWT →</button>
+            <pre id="jwt-output" class="code-output hidden"></pre>
+        </div>
+    </div>
+</section>
   <!-- GUIDE -->
   <div class="guide-section">
     <h2>What is Base64 encoding?</h2>
