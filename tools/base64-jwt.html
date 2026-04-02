@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Base64 Encoder / Decoder & JWT Inspector | HexScan</title>
+<meta name="description" content="Free Base64 encoder, decoder, and JWT token inspector. Decode any JWT token instantly. Learn how Base64 encoding works, what JWTs are, and common JWT security vulnerabilities." />
+<meta name="keywords" content="base64 decoder, base64 encoder, JWT decoder, JSON web token, JWT inspector, base64 online, decode JWT" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://hexscan-tools.vercel.app/tools/base64-jwt.html" />
+<meta property="og:title" content="Base64 & JWT Decoder — HexScan" />
+<meta property="og:description" content="Encode and decode Base64 or decode any JWT token instantly. Free, runs in browser." />
+<meta property="og:url" content="https://hexscan-tools.vercel.app/tools/base64-jwt.html" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3698493513053471" crossorigin="anonymous"></script>
+<style>
+  .guide-section { padding: 28px; background: var(--bg2); border: 1px solid var(--border); border-left: 2px solid var(--accent); margin-bottom: 16px; }
+  .guide-section h2 { font-size: 1.25rem; font-weight: 700; text-transform: uppercase; margin-bottom: 14px; }
+  .guide-section h3 { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin: 18px 0 10px; }
+  .guide-section p { font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 12px; }
+  .guide-section li { font-family: var(--font-mono); font-size: 0.83rem; color: var(--text-muted); line-height: 1.75; list-style: none; padding-left: 16px; position: relative; margin-bottom: 6px; }
+  .guide-section li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+  .back-link { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 24px; }
+  .back-link:hover { color: var(--accent); }
+  .jwt-parts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 12px 0; }
+  .jwt-part { padding: 14px; background: var(--bg3); border: 1px solid var(--border); }
+  .jwt-part-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .jwt-part-label.red { color: #ff6b6b; }
+  .jwt-part-label.purple { color: #c084fc; }
+  .jwt-part-label.blue { color: #60a5fa; }
+  .jwt-part-desc { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+  @media(max-width:580px){.jwt-parts{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="logo"><span class="logo-icon">⬡</span><span class="logo-text">Hex<strong>Scan</strong></span></div>
+    <nav class="nav">
+      <a href="../index.html#privacy">Privacy</a>
+      <a href="../index.html#network">Network</a>
+      <a href="../index.html#websec">Web Security</a>
+      <a href="../index.html#devtools">Dev Tools</a>
+      <a href="https://www.paypal.com/paypalme/imperius06" target="_blank" class="nav-donate">❤️ Donate</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container tools-container" style="max-width:820px;">
+  <a href="../index.html" class="back-link">← All tools</a>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">🔄 Tool 08 — Developer Tools</div>
+    <h1 style="font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:10px;">Base64 &amp; JWT <span style="color:var(--accent);">Decoder</span></h1>
+    <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Encode or decode Base64 strings, or inspect any JWT token — all in your browser, nothing sent to any server.</p>
+  </div>
+
+  <!-- TOOL -->
+  <section class="tool-card" style="margin-bottom:40px;">
+    <div class="tool-header">
+      <span class="tool-icon">🔄</span>
+      <div>
+        <h2 class="tool-title">Base64 &amp; JWT Decoder</h2>
+        <p class="tool-desc">Encode, decode Base64 or decode a JWT token instantly.</p>
+      </div>
+    </div>
+    <div class="tool-body">
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab(this,'b64-encode')">Encode</button>
+        <button class="tab" onclick="switchTab(this,'b64-decode')">Decode</button>
+        <button class="tab" onclick="switchTab(this,'jwt-decode')">JWT</button>
+      </div>
+      <div id="b64-encode" class="tab-panel active">
+        <textarea id="b64e-input" class="textarea" placeholder="Text to encode..."></textarea>
+        <button class="btn-primary" onclick="b64Encode()">Encode →</button>
+        <div class="output-box mt"><span id="b64e-output" class="mono small"></span><button class="copy-btn" onclick="copyText('b64e-output')">Copy</button></div>
+      </div>
+      <div id="b64-decode" class="tab-panel">
+        <textarea id="b64d-input" class="textarea" placeholder="Base64 to decode..."></textarea>
+        <button class="btn-primary" onclick="b64Decode()">Decode →</button>
+        <div class="output-box mt"><span id="b64d-output" class="mono small"></span><button class="copy-btn" onclick="copyText('b64d-output')">Copy</button></div>
+      </div>
+      <div id="jwt-decode" class="tab-panel">
+        <textarea id="jwt-input" class="textarea" placeholder="Paste JWT token..."></textarea>
+        <button class="btn-primary" onclick="decodeJWT()">Decode JWT →</button>
+        <pre id="jwt-output" class="code-output hidden"></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <div class="guide-section">
+    <h2>What is Base64 encoding?</h2>
+    <p>Base64 is a binary-to-text encoding scheme that represents binary data using a set of 64 printable ASCII characters (A–Z, a–z, 0–9, +, /). It was designed to safely transmit binary data through systems that only handle text — email protocols (MIME), HTTP headers, data URLs, and API responses.</p>
+    <p>Base64 is an <strong style="color:var(--text)">encoding</strong>, not encryption. It adds no security — anyone can decode a Base64 string instantly. It is purely a format transformation. A common beginner mistake is treating Base64-encoded data as "protected" when it is trivially reversible.</p>
+
+    <h3>How Base64 encoding works</h3>
+    <p>Base64 converts every 3 bytes of binary data into 4 ASCII characters. The process:</p>
+    <ul>
+      <li>Take 3 bytes (24 bits) of input data</li>
+      <li>Split into four 6-bit groups</li>
+      <li>Map each 6-bit value (0–63) to a character from the Base64 alphabet</li>
+      <li>If the input length is not divisible by 3, pad with <code style="color:var(--accent)">=</code> characters</li>
+    </ul>
+    <p>The result is always approximately 33% larger than the original input. A 3MB image encoded in Base64 becomes roughly 4MB as a string.</p>
+
+    <h3>Common uses of Base64</h3>
+    <ul>
+      <li>Embedding images directly in HTML/CSS as <code style="color:var(--accent)">data:image/png;base64,...</code> URLs</li>
+      <li>Encoding binary attachments in emails (MIME encoding)</li>
+      <li>Transmitting binary data in JSON APIs that only support text</li>
+      <li>HTTP Basic Authentication: <code style="color:var(--accent)">Authorization: Basic base64(user:password)</code></li>
+      <li>The middle part of JWT tokens (header and payload are Base64URL-encoded)</li>
+    </ul>
+
+    <h3>What is a JWT (JSON Web Token)?</h3>
+    <p>A JSON Web Token is a compact, self-contained way to represent claims between two parties. It is widely used for authentication and authorization in web APIs — instead of storing session state on the server, the server issues a signed JWT that the client stores and sends with each request.</p>
+
+    <div class="jwt-parts">
+      <div class="jwt-part">
+        <div class="jwt-part-label red">Header</div>
+        <p class="jwt-part-desc">Specifies the token type (<code style="color:var(--accent)">JWT</code>) and the signing algorithm (<code style="color:var(--accent)">HS256</code>, <code style="color:var(--accent)">RS256</code>, etc.). Base64URL encoded.</p>
+      </div>
+      <div class="jwt-part">
+        <div class="jwt-part-label purple">Payload</div>
+        <p class="jwt-part-desc">Contains the claims — user ID, roles, expiry time, and any custom data. Base64URL encoded. <strong style="color:#f87171">Readable by anyone</strong> — never put secrets here.</p>
+      </div>
+      <div class="jwt-part">
+        <div class="jwt-part-label blue">Signature</div>
+        <p class="jwt-part-desc">HMAC or RSA signature over header + payload. Verifies the token hasn't been tampered with. Only parties with the secret/private key can create valid signatures.</p>
+      </div>
+    </div>
+
+    <p>A JWT looks like: <code style="color:#ff6b6b">eyJhbGciOiJIUzI1NiJ9</code>.<code style="color:#c084fc">eyJ1c2VyIjoiYWxpY2UifQ</code>.<code style="color:#60a5fa">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></p>
+
+    <h3>JWT security vulnerabilities to know</h3>
+    <ul>
+      <li><strong style="color:var(--text)">Algorithm confusion (alg:none)</strong> — early JWT libraries accepted tokens with <code style="color:var(--accent)">"alg":"none"</code>, meaning no signature required. Always verify the algorithm header matches what your server expects.</li>
+      <li><strong style="color:var(--text)">RS256 → HS256 confusion</strong> — if a server uses RS256 (asymmetric), an attacker can forge tokens by switching the algorithm to HS256 and signing with the public key (which is, by definition, public).</li>
+      <li><strong style="color:var(--text)">Weak secrets</strong> — HS256 tokens signed with a short or guessable secret can be brute-forced. Use secrets of at least 256 bits.</li>
+      <li><strong style="color:var(--text)">Missing expiry validation</strong> — always check the <code style="color:var(--accent)">exp</code> claim server-side. A token that never expires is a permanent credential if leaked.</li>
+      <li><strong style="color:var(--text)">Sensitive data in payload</strong> — the payload is Base64-encoded, not encrypted. Never store passwords, PII, or secrets in JWT claims unless using JWE (JSON Web Encryption).</li>
+    </ul>
+  </div>
+
+  <div style="text-align:center;margin-top:32px;">
+    <a href="../index.html" class="btn-primary" style="display:inline-block;text-decoration:none;">← Back to all tools</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>HexScan — Free security tools. No login. No tracking. Open source.</p>
+    <p class="footer-links">
+      <a href="../index.html">Tools</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../terms.html">Terms of Use</a>
+    </p>
+  </div>
+</footer>
+<div id="toast" class="toast">Copied!</div>
+<script>
+function copyText(id){navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800);});}
+function switchTab(btn,id){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(id).classList.add('active');}
+function b64Encode(){try{document.getElementById('b64e-output').textContent=btoa(unescape(encodeURIComponent(document.getElementById('b64e-input').value)));}catch(e){document.getElementById('b64e-output').textContent='Error: '+e.message;}}
+function b64Decode(){try{document.getElementById('b64d-output').textContent=decodeURIComponent(escape(atob(document.getElementById('b64d-input').value)));}catch(e){document.getElementById('b64d-output').textContent='Error: invalid Base64';}}
+function decodeJWT(){const t=document.getElementById('jwt-input').value.trim();const parts=t.split('.');if(parts.length!==3){document.getElementById('jwt-output').textContent='Invalid JWT: expected 3 parts separated by dots';document.getElementById('jwt-output').classList.remove('hidden');return;}try{const decode=s=>{s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return JSON.parse(atob(s));};const h=decode(parts[0]),p=decode(parts[1]);const out={header:h,payload:p,signature:'['+parts[2]+'] (verify server-side)'};document.getElementById('jwt-output').textContent=JSON.stringify(out,null,2);document.getElementById('jwt-output').classList.remove('hidden');}catch(e){document.getElementById('jwt-output').textContent='Error decoding JWT: '+e.message;document.getElementById('jwt-output').classList.remove('hidden');}}
+</script>
+</body>
+</html>

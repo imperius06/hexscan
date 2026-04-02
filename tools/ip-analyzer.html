@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IP Address Analyzer — Geolocation & Reputation Lookup | HexScan</title>
+<meta name="description" content="Analyze any IP address: geolocation, ISP, open ports, reputation, and reverse DNS. Free IP lookup tool. Learn how IP addresses work, IPv4 vs IPv6, and how geolocation is determined." />
+<meta name="keywords" content="ip address lookup, ip geolocation, ip analyzer, what is my ip, ip reputation, reverse dns lookup, ipv4 vs ipv6" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://hexscan-tools.vercel.app/tools/ip-analyzer.html" />
+<meta property="og:title" content="IP Address Analyzer — HexScan" />
+<meta property="og:description" content="Geolocation, ISP, reputation and more for any IP address. Free, no login required." />
+<meta property="og:url" content="https://hexscan-tools.vercel.app/tools/ip-analyzer.html" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3698493513053471" crossorigin="anonymous"></script>
+<style>
+  .guide-section { padding: 28px; background: var(--bg2); border: 1px solid var(--border); border-left: 2px solid var(--accent); margin-bottom: 16px; }
+  .guide-section h2 { font-size: 1.25rem; font-weight: 700; text-transform: uppercase; margin-bottom: 14px; }
+  .guide-section h3 { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin: 18px 0 10px; }
+  .guide-section p { font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 12px; }
+  .guide-section li { font-family: var(--font-mono); font-size: 0.83rem; color: var(--text-muted); line-height: 1.75; list-style: none; padding-left: 16px; position: relative; margin-bottom: 6px; }
+  .guide-section li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+  .back-link { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 24px; }
+  .back-link:hover { color: var(--accent); }
+  .ip-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .ip-col { padding: 16px; background: var(--bg3); border: 1px solid var(--border); }
+  .ip-col-title { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .ip-col p { font-family: var(--font-mono); font-size: 0.80rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 8px; }
+  @media(max-width:580px){.ip-compare{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="logo"><span class="logo-icon">⬡</span><span class="logo-text">Hex<strong>Scan</strong></span></div>
+    <nav class="nav">
+      <a href="../index.html#privacy">Privacy</a>
+      <a href="../index.html#network">Network</a>
+      <a href="../index.html#websec">Web Security</a>
+      <a href="../index.html#devtools">Dev Tools</a>
+      <a href="https://www.paypal.com/paypalme/imperius06" target="_blank" class="nav-donate">❤️ Donate</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container tools-container" style="max-width:820px;">
+  <a href="../index.html" class="back-link">← All tools</a>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">🌐 Tool 04 — Network & Recon</div>
+    <h1 style="font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:10px;">IP <span style="color:var(--accent);">Analyzer</span></h1>
+    <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Geolocation, ISP, reputation, open ports, and reverse DNS for any IP address.</p>
+  </div>
+
+  <!-- TOOL -->
+  <section class="tool-card" style="margin-bottom:40px;">
+    <div class="tool-header">
+      <span class="tool-icon">🌐</span>
+      <div>
+        <h2 class="tool-title">IP Analyzer</h2>
+        <p class="tool-desc">Geolocation, reputation, open ports, and domains on any IP.</p>
+      </div>
+    </div>
+    <div class="tool-body">
+      <div class="input-row">
+        <input type="text" id="ip-input" class="text-input" placeholder="8.8.8.8" />
+        <button class="btn-primary" style="margin-top:0" onclick="analyzeIP()">🔍 Analyze</button>
+      </div>
+      <div id="ip-result" class="result-list hidden"></div>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <div class="guide-section">
+    <h2>What is an IP address?</h2>
+    <p>An IP (Internet Protocol) address is a numerical label assigned to every device connected to a network. It serves two functions: identifying the host (or network interface) and providing the location address for routing traffic across the internet. Every web request you make reveals your IP address to the server you're connecting to.</p>
+    <p>IP addresses are allocated by the Internet Assigned Numbers Authority (IANA) and distributed to Regional Internet Registries (RIRs) like ARIN (North America), RIPE NCC (Europe), and APNIC (Asia-Pacific), which in turn allocate them to ISPs and organizations.</p>
+
+    <h3>IPv4 vs IPv6 — the difference</h3>
+    <div class="ip-compare">
+      <div class="ip-col">
+        <div class="ip-col-title">IPv4</div>
+        <p>32-bit address. Roughly 4.3 billion possible addresses. Written as four octets: <code style="color:var(--accent)">192.168.1.1</code>. Exhausted globally since 2011. Still the dominant version in use today, managed via NAT.</p>
+      </div>
+      <div class="ip-col">
+        <div class="ip-col-title">IPv6</div>
+        <p>128-bit address. 340 undecillion possible addresses — effectively unlimited. Written in hexadecimal: <code style="color:var(--accent)">2001:0db8:85a3::8a2e:0370:7334</code>. Designed to replace IPv4 but adoption remains partial.</p>
+      </div>
+    </div>
+
+    <h3>How does IP geolocation work?</h3>
+    <p>IP geolocation works by mapping IP address ranges to geographic locations based on registration data from RIRs, BGP routing information, and supplementary data gathered through user opt-in, Wi-Fi triangulation, and manual corrections. It is not GPS — it has significant limitations:</p>
+    <ul>
+      <li>Accuracy is typically city-level for broadband connections, but can be off by hundreds of kilometers for mobile or satellite IPs.</li>
+      <li>VPNs, proxies, and Tor exit nodes show the location of the server, not the user.</li>
+      <li>Large organizations may appear to be at their corporate HQ location even if users are worldwide.</li>
+      <li>IPv6 geolocation is often less accurate than IPv4 due to less historical data.</li>
+    </ul>
+
+    <h3>What IP information reveals about you</h3>
+    <p>Every website you visit receives your IP address automatically — it's required for routing. From that IP, sites can infer:</p>
+    <ul>
+      <li>Approximate geographic location (typically city/region level)</li>
+      <li>Your Internet Service Provider (ISP) and sometimes your organization</li>
+      <li>Whether you're using a VPN, datacenter, or Tor exit node (via reputation databases)</li>
+      <li>Your ASN (Autonomous System Number), which identifies the network operator</li>
+    </ul>
+    <p>This is why IP address privacy matters. Tools like VPNs, Tor, and privacy-respecting DNS resolvers help limit what can be inferred from your IP.</p>
+
+    <h3>Using IP analysis in security work</h3>
+    <ul>
+      <li>Identify the owner and location of a suspicious IP seen in server logs or a phishing email header.</li>
+      <li>Check if an IP is listed in threat intelligence blocklists (spam, malware C2, proxies).</li>
+      <li>Verify whether a connection is coming from a known hosting provider or residential IP range.</li>
+      <li>During incident response: quickly profile IPs seen in authentication logs or firewall alerts.</li>
+    </ul>
+  </div>
+
+  <div style="text-align:center;margin-top:32px;">
+    <a href="../index.html" class="btn-primary" style="display:inline-block;text-decoration:none;">← Back to all tools</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>HexScan — Free security tools. No login. No tracking. Open source.</p>
+    <p class="footer-links">
+      <a href="../index.html">Tools</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../terms.html">Terms of Use</a>
+    </p>
+  </div>
+</footer>
+<div id="toast" class="toast">Copied!</div>
+<script src="../js/tool8-ip.js"></script>
+</body>
+</html>

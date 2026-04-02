@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Email Breach Checker — Was My Email Hacked? | HexScan</title>
+<meta name="description" content="Check if your email address appeared in a known data breach. Free, private breach checker using LeakCheck API. Learn how data breaches happen and how to protect yourself." />
+<meta name="keywords" content="email breach checker, have i been pwned, data breach check, check email hacked, leaked email, credential stuffing" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://hexscan-tools.vercel.app/tools/breach-checker.html" />
+<meta property="og:title" content="Email Breach Checker — HexScan" />
+<meta property="og:description" content="Check if your email appeared in a known data breach. Free, private, no account required." />
+<meta property="og:url" content="https://hexscan-tools.vercel.app/tools/breach-checker.html" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3698493513053471" crossorigin="anonymous"></script>
+<style>
+  .guide-section { padding: 28px; background: var(--bg2); border: 1px solid var(--border); border-left: 2px solid var(--accent); margin-bottom: 16px; }
+  .guide-section h2 { font-size: 1.25rem; font-weight: 700; text-transform: uppercase; margin-bottom: 14px; }
+  .guide-section h3 { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin: 18px 0 10px; }
+  .guide-section p { font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 12px; }
+  .guide-section li { font-family: var(--font-mono); font-size: 0.83rem; color: var(--text-muted); line-height: 1.75; list-style: none; padding-left: 16px; position: relative; margin-bottom: 6px; }
+  .guide-section li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+  .back-link { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 24px; }
+  .back-link:hover { color: var(--accent); }
+  .breach-timeline { border-left: 2px solid var(--accent); padding-left: 20px; margin-top: 12px; }
+  .breach-event { margin-bottom: 16px; }
+  .breach-event-name { font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); font-weight: 600; }
+  .breach-event-detail { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="logo"><span class="logo-icon">⬡</span><span class="logo-text">Hex<strong>Scan</strong></span></div>
+    <nav class="nav">
+      <a href="../index.html#privacy">Privacy</a>
+      <a href="../index.html#network">Network</a>
+      <a href="../index.html#websec">Web Security</a>
+      <a href="../index.html#devtools">Dev Tools</a>
+      <a href="https://www.paypal.com/paypalme/imperius06" target="_blank" class="nav-donate">❤️ Donate</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container tools-container" style="max-width:820px;">
+  <a href="../index.html" class="back-link">← All tools</a>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">🔍 Tool 02 — Privacy & Passwords</div>
+    <h1 style="font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:10px;">Email Breach <span style="color:var(--accent);">Checker</span></h1>
+    <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Check if your email address appeared in a known data breach. Uses the LeakCheck API. Your query is not stored by HexScan.</p>
+  </div>
+
+  <!-- TOOL -->
+  <section class="tool-card" style="margin-bottom:40px;">
+    <div class="tool-header">
+      <span class="tool-icon">🔍</span>
+      <div>
+        <h2 class="tool-title">Breach Checker</h2>
+        <p class="tool-desc">Check if your email appeared in a known data breach.</p>
+      </div>
+    </div>
+    <div class="tool-body">
+      <div class="input-row">
+        <input type="email" id="breach-email" class="text-input" placeholder="you@example.com" />
+        <button class="btn-primary" style="margin-top:0" onclick="checkBreach()">Check</button>
+      </div>
+      <div id="breach-result" class="result-box hidden"></div>
+      <p class="tool-note">Uses the <a href="https://leakcheck.io" target="_blank">LeakCheck</a> API. Your data is not stored.</p>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <div class="guide-section">
+    <h2>What is a data breach?</h2>
+    <p>A data breach occurs when an unauthorized party gains access to a database containing user information — typically usernames, email addresses, passwords, and sometimes payment data or personal identifiers. Breaches can happen due to SQL injection attacks, misconfigured servers, insider threats, phishing campaigns against employees, or vulnerabilities in third-party software.</p>
+    <p>Once credentials are stolen, they are typically compiled into lists and sold on dark web marketplaces. These lists then get used in <strong style="color:var(--text)">credential stuffing attacks</strong> — automated tools that try each username/password pair across dozens of other services, exploiting the fact that most people reuse passwords.</p>
+
+    <h3>Notable breaches — real world examples</h3>
+    <div class="breach-timeline">
+      <div class="breach-event">
+        <div class="breach-event-name">LinkedIn — 2012 / 2016</div>
+        <div class="breach-event-detail">117 million credentials. Original breach in 2012; full dataset surfaced for sale in 2016. Passwords were SHA-1 hashed without salt — cracked within weeks.</div>
+      </div>
+      <div class="breach-event">
+        <div class="breach-event-name">Adobe — 2013</div>
+        <div class="breach-event-detail">153 million records. Passwords encrypted with 3DES (not hashed), plus a password hint field that made cracking trivial.</div>
+      </div>
+      <div class="breach-event">
+        <div class="breach-event-name">Yahoo — 2013–2014</div>
+        <div class="breach-event-detail">3 billion accounts. Largest breach ever disclosed. Not revealed until 2016. MD5 hashed passwords with no salt on some accounts.</div>
+      </div>
+      <div class="breach-event">
+        <div class="breach-event-name">RockYou2021 — 2021</div>
+        <div class="breach-event-detail">8.4 billion password entries — a compilation of previous breaches. Largest credential list ever published.</div>
+      </div>
+    </div>
+
+    <h3>How does the breach checker work?</h3>
+    <p>This tool queries the LeakCheck API, which aggregates data from publicly known breach dumps. When you submit an email, the API checks it against its index of breached records and returns which breaches (if any) the email appeared in.</p>
+    <p>Your email is sent as part of the API query — LeakCheck's privacy policy governs how they handle that data. HexScan does not log, store, or transmit your email to any other service. See the <a href="../privacy.html" style="color:var(--accent)">Privacy Policy</a>.</p>
+
+    <h3>What to do if your email was found in a breach</h3>
+    <ul>
+      <li>Change the password for the breached service immediately.</li>
+      <li>If you reused that password anywhere else, change it on every site that shares it.</li>
+      <li>Enable two-factor authentication on your email account — this is the most impactful single action you can take.</li>
+      <li>Check whether your email provider supports alerts for suspicious login attempts.</li>
+      <li>Consider using a password manager to generate and store unique passwords for each service going forward.</li>
+      <li>If financial data was involved in the breach, monitor your accounts and consider a credit freeze.</li>
+    </ul>
+
+    <h3>Credential stuffing — the real risk of reused passwords</h3>
+    <p>When a breach occurs, attackers don't just try to log into the breached service — they systematically try the same email/password combination against every major platform: Google, Facebook, banking sites, Amazon, PayPal. This is credential stuffing, and it's highly automated.</p>
+    <p>Tools like Sentry MBA, OpenBullet, and STORM run through millions of credential pairs per hour. Defenses like rate limiting, CAPTCHA, and IP blocking slow this down but don't stop it completely. The only reliable defense is unique passwords per service — which makes each leaked credential useless everywhere else.</p>
+  </div>
+
+  <div style="text-align:center;margin-top:32px;">
+    <a href="../index.html" class="btn-primary" style="display:inline-block;text-decoration:none;">← Back to all tools</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>HexScan — Free security tools. No login. No tracking. Open source.</p>
+    <p class="footer-links">
+      <a href="../index.html">Tools</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../terms.html">Terms of Use</a>
+    </p>
+  </div>
+</footer>
+<div id="toast" class="toast">Copied!</div>
+<script src="../js/tool2-breach.js"></script>
+</body>
+</html>

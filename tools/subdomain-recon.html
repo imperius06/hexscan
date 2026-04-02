@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Subdomain Finder — Free Passive Subdomain Recon | HexScan</title>
+<meta name="description" content="Discover subdomains using passive reconnaissance — crt.sh and HackerTarget. Free subdomain finder for pentesters and developers. Learn how DNS and certificate transparency work." />
+<meta name="keywords" content="subdomain finder, subdomain enumeration, passive recon, crt.sh, certificate transparency, DNS recon, subdomain scanner" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://hexscan-tools.vercel.app/tools/subdomain-recon.html" />
+<meta property="og:title" content="Subdomain Finder — Passive Recon | HexScan" />
+<meta property="og:description" content="Discover subdomains using passive sources. Free, no login, authorized testing only." />
+<meta property="og:url" content="https://hexscan-tools.vercel.app/tools/subdomain-recon.html" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3698493513053471" crossorigin="anonymous"></script>
+<style>
+  .guide-section { padding: 28px; background: var(--bg2); border: 1px solid var(--border); border-left: 2px solid var(--accent); margin-bottom: 16px; }
+  .guide-section h2 { font-size: 1.25rem; font-weight: 700; text-transform: uppercase; margin-bottom: 14px; }
+  .guide-section h3 { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin: 18px 0 10px; }
+  .guide-section p { font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 12px; }
+  .guide-section li { font-family: var(--font-mono); font-size: 0.83rem; color: var(--text-muted); line-height: 1.75; list-style: none; padding-left: 16px; position: relative; margin-bottom: 6px; }
+  .guide-section li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+  .back-link { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 24px; }
+  .back-link:hover { color: var(--accent); }
+  .dns-diagram { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0; }
+  .dns-box { padding: 14px; background: var(--bg3); border: 1px solid var(--border); text-align: center; }
+  .dns-box-label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .dns-box-val { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); }
+  @media(max-width:600px){.dns-diagram{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="logo"><span class="logo-icon">⬡</span><span class="logo-text">Hex<strong>Scan</strong></span></div>
+    <nav class="nav">
+      <a href="../index.html#privacy">Privacy</a>
+      <a href="../index.html#network">Network</a>
+      <a href="../index.html#websec">Web Security</a>
+      <a href="../index.html#devtools">Dev Tools</a>
+      <a href="https://www.paypal.com/paypalme/imperius06" target="_blank" class="nav-donate">❤️ Donate</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container tools-container" style="max-width:820px;">
+  <a href="../index.html" class="back-link">← All tools</a>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">🎯 Tool 03 — Network & Recon</div>
+    <h1 style="font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:10px;">Subdomain <span style="color:var(--accent);">Recon</span></h1>
+    <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Discover subdomains using passive certificate transparency logs and public DNS datasets. Authorized testing only.</p>
+  </div>
+
+  <!-- TOOL -->
+  <section class="tool-card" style="margin-bottom:40px;">
+    <div class="tool-header">
+      <span class="tool-icon">🎯</span>
+      <div>
+        <h2 class="tool-title">Subdomain Recon</h2>
+        <p class="tool-desc">Discover subdomains using passive sources (crt.sh + HackerTarget).</p>
+      </div>
+    </div>
+    <div class="tool-body">
+      <div class="input-row">
+        <input type="text" id="sub-domain" class="text-input" placeholder="example.com" />
+        <button class="btn-primary" style="margin-top:0" onclick="scanSubdomains()">🔍 Scan</button>
+      </div>
+      <p class="tool-note">⚠️ Passive recon only — queries public databases, no direct scanning.</p>
+      <div id="sub-result" class="result-list hidden"></div>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <div class="guide-section">
+    <h2>What is subdomain enumeration?</h2>
+    <p>Subdomain enumeration is the process of discovering all subdomains associated with a target domain — for example finding <code style="color:var(--accent)">api.example.com</code>, <code style="color:var(--accent)">staging.example.com</code>, or <code style="color:var(--accent)">admin.example.com</code> when starting with just <code style="color:var(--accent)">example.com</code>.</p>
+    <p>Subdomains matter from a security perspective because they often host older, less-maintained applications, test environments with weaker security configurations, internal services accidentally exposed to the internet, or services running outdated software. Finding them is one of the first steps in any authorized penetration test or bug bounty reconnaissance.</p>
+
+    <h3>Passive vs. active reconnaissance</h3>
+    <p>There are two broad approaches to subdomain discovery:</p>
+    <ul>
+      <li><strong style="color:var(--text)">Active recon</strong> — directly probing the target's DNS servers, brute-forcing subdomain names, or scanning IP ranges. This generates traffic visible to the target and may be illegal without permission.</li>
+      <li><strong style="color:var(--text)">Passive recon</strong> — querying third-party databases that have already indexed information about the target without direct interaction. This tool uses passive sources only.</li>
+    </ul>
+
+    <h3>How does certificate transparency work?</h3>
+    <p>Every TLS/SSL certificate issued by a trusted Certificate Authority (CA) must be recorded in a public log — this requirement is called <strong style="color:var(--text)">Certificate Transparency (CT)</strong>, defined in RFC 6962. CT logs exist to detect fraudulent or misissued certificates.</p>
+    <p>A useful side effect: because every certificate must list the domain name(s) it covers, CT logs become a comprehensive index of every subdomain that has ever had a certificate issued for it. The <a href="https://crt.sh" target="_blank" style="color:var(--accent)">crt.sh</a> service aggregates these logs and makes them searchable — which is exactly what this tool uses.</p>
+
+    <h3>Common subdomain types and their risks</h3>
+    <div class="dns-diagram">
+      <div class="dns-box"><div class="dns-box-label">staging / dev / test</div><div class="dns-box-val">Often run older software, skip WAF rules, or expose debug endpoints</div></div>
+      <div class="dns-box"><div class="dns-box-label">admin / portal / dashboard</div><div class="dns-box-val">Management interfaces — if exposed, often the highest-value targets</div></div>
+      <div class="dns-box"><div class="dns-box-label">api / v1 / v2</div><div class="dns-box-val">API endpoints that may lack the same auth as the main app</div></div>
+      <div class="dns-box"><div class="dns-box-label">mail / smtp / webmail</div><div class="dns-box-val">Email infrastructure — open relays and MX misconfigs</div></div>
+      <div class="dns-box"><div class="dns-box-label">vpn / remote / citrix</div><div class="dns-box-val">Remote access services — high value if credentials are weak</div></div>
+      <div class="dns-box"><div class="dns-box-label">old / legacy / 2020</div><div class="dns-box-val">Forgotten applications, rarely patched, easy wins for attackers</div></div>
+    </div>
+
+    <h3>What to do with subdomain results</h3>
+    <ul>
+      <li>For defenders: audit your own domain for unexpected subdomains. Every subdomain you don't know about is an asset you can't protect.</li>
+      <li>For pentesters: cross-reference with port scanning and HTTP probing to identify live services (use only on authorized targets).</li>
+      <li>For developers: decommission old subdomains properly — simply removing DNS records while leaving the underlying server running is not enough. A "dangling DNS" record pointing to an abandoned cloud resource can be taken over by an attacker.</li>
+      <li>Check for subdomain takeover possibilities: if a subdomain points to a third-party service (GitHub Pages, Heroku, Netlify) that no longer has the corresponding project configured, the subdomain may be claimable by anyone.</li>
+    </ul>
+  </div>
+
+  <div style="text-align:center;margin-top:32px;">
+    <a href="../index.html" class="btn-primary" style="display:inline-block;text-decoration:none;">← Back to all tools</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>HexScan — Free security tools. No login. No tracking. Open source.</p>
+    <p class="footer-links">
+      <a href="../index.html">Tools</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../terms.html">Terms of Use</a>
+    </p>
+  </div>
+</footer>
+<div id="toast" class="toast">Copied!</div>
+<script src="../js/tool6-subdomains.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HTTP Header Analyzer — Security Header Checker | HexScan</title>
+<meta name="description" content="Analyze HTTP security headers for any URL. Check HSTS, CSP, X-Frame-Options, and more. Free HTTP header scanner. Learn which security headers your site needs and why they matter." />
+<meta name="keywords" content="http header analyzer, security headers, HSTS checker, content security policy, X-Frame-Options, HTTP security audit, web security headers" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://hexscan-tools.vercel.app/tools/http-header-analyzer.html" />
+<meta property="og:title" content="HTTP Header Analyzer — HexScan" />
+<meta property="og:description" content="Scan any URL for missing or misconfigured HTTP security headers. Free, instant, no login." />
+<meta property="og:url" content="https://hexscan-tools.vercel.app/tools/http-header-analyzer.html" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3698493513053471" crossorigin="anonymous"></script>
+<style>
+  .guide-section { padding: 28px; background: var(--bg2); border: 1px solid var(--border); border-left: 2px solid var(--accent); margin-bottom: 16px; }
+  .guide-section h2 { font-size: 1.25rem; font-weight: 700; text-transform: uppercase; margin-bottom: 14px; }
+  .guide-section h3 { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin: 18px 0 10px; }
+  .guide-section p { font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 12px; }
+  .guide-section li { font-family: var(--font-mono); font-size: 0.83rem; color: var(--text-muted); line-height: 1.75; list-style: none; padding-left: 16px; position: relative; margin-bottom: 6px; }
+  .guide-section li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+  .back-link { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 24px; }
+  .back-link:hover { color: var(--accent); }
+  .header-card { padding: 14px 18px; background: var(--bg3); border: 1px solid var(--border); margin-bottom: 10px; }
+  .header-name { font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); font-weight: 600; margin-bottom: 4px; }
+  .header-grade { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); float: right; }
+  .header-desc { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="logo"><span class="logo-icon">⬡</span><span class="logo-text">Hex<strong>Scan</strong></span></div>
+    <nav class="nav">
+      <a href="../index.html#privacy">Privacy</a>
+      <a href="../index.html#network">Network</a>
+      <a href="../index.html#websec">Web Security</a>
+      <a href="../index.html#devtools">Dev Tools</a>
+      <a href="https://www.paypal.com/paypalme/imperius06" target="_blank" class="nav-donate">❤️ Donate</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container tools-container" style="max-width:820px;">
+  <a href="../index.html" class="back-link">← All tools</a>
+
+  <div style="margin-bottom:32px;">
+    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">🛡️ Tool 05 — Web Security</div>
+    <h1 style="font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:10px;">HTTP Header <span style="color:var(--accent);">Analyzer</span></h1>
+    <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Scan any URL or paste response headers to get a full security audit. Identifies missing, weak, or misconfigured security headers.</p>
+  </div>
+
+  <!-- TOOL -->
+  <section class="tool-card" style="margin-bottom:40px;">
+    <div class="tool-header">
+      <span class="tool-icon">🛡️</span>
+      <div>
+        <h2 class="tool-title">HTTP Header Analyzer</h2>
+        <p class="tool-desc">Scan any URL or paste headers to get a full security audit.</p>
+      </div>
+    </div>
+    <div class="tool-body">
+      <div class="input-row" style="margin-bottom:14px">
+        <input type="text" id="scan-url" class="text-input" placeholder="https://example.com" />
+        <button class="btn-primary" style="margin-top:0" onclick="scanURL()">⚡ Live Scan</button>
+      </div>
+      <textarea id="headers-input" class="textarea tall" placeholder="Or paste HTTP response headers manually...&#10;&#10;Example:&#10;Content-Type: text/html&#10;X-Frame-Options: DENY&#10;Strict-Transport-Security: max-age=31536000"></textarea>
+      <button class="btn-primary" onclick="analyzeHeaders()">Analyze Headers</button>
+      <div id="headers-result" class="result-list hidden"></div>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <div class="guide-section">
+    <h2>What are HTTP security headers?</h2>
+    <p>HTTP security headers are response headers that a web server sends along with every page, telling the browser how to behave in ways that improve security. They are one of the easiest and most impactful security improvements a developer can make — a few lines of server configuration can mitigate entire classes of attacks like clickjacking, cross-site scripting (XSS), and protocol downgrade attacks.</p>
+    <p>Missing or misconfigured security headers are consistently listed in the OWASP Top 10 and appear in the majority of web application penetration test reports. Yet they are often overlooked because they have no visible effect on the user experience — the protection happens silently in the browser.</p>
+
+    <h3>The critical security headers explained</h3>
+
+    <div class="header-card">
+      <div class="header-name">Strict-Transport-Security (HSTS) <span class="header-grade">critical</span></div>
+      <p class="header-desc">Forces browsers to use HTTPS for future visits, even if the user types <code style="color:var(--accent)">http://</code>. Prevents SSL stripping attacks. Recommended value: <code style="color:var(--accent)">max-age=31536000; includeSubDomains; preload</code>. The <code style="color:var(--accent)">preload</code> directive submits your domain to browsers' hardcoded HSTS list.</p>
+    </div>
+
+    <div class="header-card">
+      <div class="header-name">Content-Security-Policy (CSP) <span class="header-grade">critical</span></div>
+      <p class="header-desc">Defines which sources the browser is allowed to load scripts, styles, images, and other resources from. A properly configured CSP is the most effective defense against XSS attacks. Difficult to configure correctly — use the <a href="csp-generator.html" style="color:var(--accent)">CSP Generator</a> to build one.</p>
+    </div>
+
+    <div class="header-card">
+      <div class="header-name">X-Frame-Options <span class="header-grade">important</span></div>
+      <p class="header-desc">Prevents your page from being embedded in an iframe on another site, blocking clickjacking attacks. Values: <code style="color:var(--accent)">DENY</code> (never allow framing) or <code style="color:var(--accent)">SAMEORIGIN</code> (allow framing from same origin). Superseded by <code style="color:var(--accent)">frame-ancestors</code> in CSP, but still needed for older browsers.</p>
+    </div>
+
+    <div class="header-card">
+      <div class="header-name">X-Content-Type-Options <span class="header-grade">important</span></div>
+      <p class="header-desc">Prevents browsers from MIME-type sniffing — guessing the content type of a response. Without this, a browser might execute a file served as <code style="color:var(--accent)">text/plain</code> as JavaScript if the content looks like a script. Set to <code style="color:var(--accent)">nosniff</code>.</p>
+    </div>
+
+    <div class="header-card">
+      <div class="header-name">Referrer-Policy <span class="header-grade">recommended</span></div>
+      <p class="header-desc">Controls how much referrer information is sent when navigating away from your site. Recommended: <code style="color:var(--accent)">strict-origin-when-cross-origin</code> — sends the origin only (not full URL) for cross-origin requests, full URL for same-origin.</p>
+    </div>
+
+    <div class="header-card">
+      <div class="header-name">Permissions-Policy <span class="header-grade">recommended</span></div>
+      <p class="header-desc">Controls which browser features and APIs the page (and embedded iframes) can access — camera, microphone, geolocation, payment. Restricting unused features reduces the attack surface if XSS occurs. Example: <code style="color:var(--accent)">camera=(), microphone=(), geolocation=()</code>.</p>
+    </div>
+
+    <h3>Headers that reveal too much (server fingerprinting)</h3>
+    <p>Some headers actively hurt your security by giving attackers information about your server software:</p>
+    <ul>
+      <li><strong style="color:var(--text)">Server: Apache/2.4.51</strong> — Tells attackers exactly which server software and version you run, making it trivial to look up known CVEs.</li>
+      <li><strong style="color:var(--text)">X-Powered-By: PHP/8.0.3</strong> — Reveals your backend language and version.</li>
+      <li><strong style="color:var(--text)">X-AspNet-Version</strong> — Reveals .NET version.</li>
+    </ul>
+    <p>These headers should be removed or suppressed in production. They provide zero value to legitimate users and significant value to attackers.</p>
+
+    <h3>How to add security headers to your site</h3>
+    <ul>
+      <li><strong style="color:var(--text)">Nginx:</strong> Add headers in your <code style="color:var(--accent)">server</code> or <code style="color:var(--accent)">location</code> block with <code style="color:var(--accent)">add_header</code> directives.</li>
+      <li><strong style="color:var(--text)">Apache:</strong> Use <code style="color:var(--accent)">Header set</code> in <code style="color:var(--accent)">.htaccess</code> or the main config.</li>
+      <li><strong style="color:var(--text)">Vercel / Netlify:</strong> Configure in <code style="color:var(--accent)">vercel.json</code> or <code style="color:var(--accent)">netlify.toml</code> respectively under the <code style="color:var(--accent)">headers</code> key.</li>
+      <li><strong style="color:var(--text)">Cloudflare:</strong> Use Transform Rules → Modify Response Headers in the dashboard.</li>
+      <li><strong style="color:var(--text)">Express / Node.js:</strong> Use the <code style="color:var(--accent)">helmet</code> middleware, which sets sensible defaults for all major security headers with one line.</li>
+    </ul>
+  </div>
+
+  <div style="text-align:center;margin-top:32px;">
+    <a href="../index.html" class="btn-primary" style="display:inline-block;text-decoration:none;">← Back to all tools</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>HexScan — Free security tools. No login. No tracking. Open source.</p>
+    <p class="footer-links">
+      <a href="../index.html">Tools</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../terms.html">Terms of Use</a>
+    </p>
+  </div>
+</footer>
+<div id="toast" class="toast">Copied!</div>
+<script src="../js/tool4-headers.js"></script>
+</body>
+</html>
