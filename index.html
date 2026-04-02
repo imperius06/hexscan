@@ -17,7 +17,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3698493513053471" crossorigin="anonymous"></script>
 
     <style>
-        /* Estilos específicos para la reorganización del Grid */
+        /* Estilos específicos para la reorganización del Grid con Heroicons */
         .tools-grid-container { margin-top: 60px; padding-bottom: 80px; }
         .category-section { margin-bottom: 50px; }
         .category-header { 
@@ -39,7 +39,10 @@
             border-color: #00ffcc; background: rgba(0, 255, 204, 0.03);
             transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .tool-card-link .card-icon { font-size: 1.5rem; margin-bottom: 15px; color: #00ffcc; }
+        /* Ajuste para los Heroicons SVGs */
+        .tool-card-link .card-icon-svg { 
+            width: 24px; height: 24px; margin-bottom: 15px; color: #00ffcc; flex-shrink: 0;
+        }
         .tool-card-link h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; margin: 0 0 10px 0; }
         .tool-card-link p { color: #888; font-size: 0.95rem; line-height: 1.4; margin-bottom: 20px; flex-grow: 1; }
         .launch-btn { 
@@ -74,7 +77,7 @@
 
 <section class="hero">
     <div class="container">
-        <div class="hero-badge">v2.0 — Enterprise Grade Content</div>
+        <div class="hero-badge">Free · No login · No tracking/div>
         <h1 class="hero-title">Security tools for<br /><em>Cyber-Engineers</em></h1>
         <p class="hero-subtitle">Audit, analyze and harden your digital perimeter with our specialized suite.</p>
         
@@ -97,20 +100,32 @@
     <section class="category-section">
         <div class="category-header"><span>[01]</span> Network & Recon</div>
         <div class="grid-layout">
+            
             <a href="/tools/subdomain-recon.html" class="tool-card-link">
-                <div class="card-icon">🎯</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="card-icon-svg">
+                    <path d="M2 4.25A2.25 2.25 0 0 1 4.25 2h11.5A2.25 2.25 0 0 1 18 4.25v.853a.75.75 0 0 1-.75.75h-14.5a.75.75 0 0 1-.75-.75v-.853Z" />
+                    <path d="M18 7.353a.75.75 0 0 0-.75-.75h-14.5a.75.75 0 0 0-.75.75v3.397a2.25 2.25 0 0 0 2.25 2.25h11.5a2.25 2.25 0 0 0 2.25-2.25V7.353ZM13.5 9a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Zm-3 0a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Z" />
+                    <path d="M18 14.853a.75.75 0 0 0-.75-.75h-14.5a.75.75 0 0 0-.75.75v.897A2.25 2.25 0 0 0 4.25 18h11.5a2.25 2.25 0 0 0 2.25-2.25v-.897ZM13.5 16.5a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Zm-3 0a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Z" />
+                </svg>
                 <h3>Subdomain Recon</h3>
                 <p>Passive discovery using crt.sh and HackerTarget databases. No direct scanning.</p>
                 <div class="launch-btn">EXECUTE_SCAN _ ></div>
             </a>
+
             <a href="/tools/ip-analyzer.html" class="tool-card-link">
-                <div class="card-icon">🌐</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="card-icon-svg">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM4.332 8.027a6.012 6.012 0 0 1 1.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 0 1 9 7.5V8a2 2 0 0 0 2 2h.5a.5.5 0 0 1 .5.5v.75a.75.75 0 0 0 1.5 0v-1.5a3 3 0 0 0-3-3h-.51l-.103-.309a.75.75 0 0 0-1.422.474l.104.312a1.506 1.506 0 0 0-.618.307 3.008 3.008 0 0 0-1.031 4.333 1.5 1.5 0 0 1-.812 2.277 6.017 6.017 0 0 1-3.39-3.827Zm11.42 2.09a6.018 6.018 0 0 1-4.723 5.38 1.5 1.5 0 0 0-.814-1.247A3.507 3.507 0 0 0 9.013 11.2l-.119-.356a.5.5 0 0 1 .447-.644l.386-.023a1.5 1.5 0 0 0 1.274-.83l.209-.398a.5.5 0 0 1 .69-.213l.471.255a3 3 0 0 0 3.888-1.126l.062-.1a6.029 6.029 0 0 1 .43 2.352Z" clip-rule="evenodd" />
+                </svg>
                 <h3>IP Analyzer</h3>
                 <p>Full intelligence report: Geolocation, ISP data, reputation and open port preview.</p>
                 <div class="launch-btn">ANALYZE_TARGET _ ></div>
             </a>
+
             <a href="/tools/directory-exposure.html" class="tool-card-link">
-                <div class="card-icon">🕵️</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="card-icon-svg">
+                    <path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                    <path fill-rule="evenodd" d="M.664 10.59a1.651 1.651 0 0 1 0-1.186A10.004 10.004 0 0 1 10 3c4.257 0 7.893 2.66 9.336 6.41.147.381.146.804 0 1.186A10.004 10.004 0 0 1 10 17c-4.257 0-7.893-2.66-9.336-6.41ZM14 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" clip-rule="evenodd" />
+                </svg>
                 <h3>Directory Exposure</h3>
                 <p>Scan for 120+ sensitive paths like .git, /admin, and backup.sql config files.</p>
                 <div class="launch-btn">START_DISCOVERY _ ></div>
@@ -121,14 +136,20 @@
     <section class="category-section">
         <div class="category-header"><span>[02]</span> Web Hardening</div>
         <div class="grid-layout">
+            
             <a href="/tools/http-header-analyzer.html" class="tool-card-link">
-                <div class="card-icon">🛡️</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="card-icon-svg">
+                    <path fill-rule="evenodd" d="M10.339 2.237a.532.532 0 0 0-.678 0 11.947 11.947 0 0 1-7.078 2.75.5.5 0 0 0-.479.425A12.11 12.11 0 0 0 2 7c0 5.163 3.46 9.521 8 10.888 4.54-1.367 8-5.725 8-10.888a12.11 12.11 0 0 0-.104-1.588.5.5 0 0 0-.479-.425 11.947 11.947 0 0 1-7.078-2.75ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 6a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z" clip-rule="evenodd" />
+                </svg>
                 <h3>HTTP Header Analyzer</h3>
                 <p>Analyze response headers (HSTS, CSP, XFO) and find security misconfigurations.</p>
                 <div class="launch-btn">AUDIT_HEADERS _ ></div>
             </a>
+
             <a href="/tools/csp-generator.html" class="tool-card-link">
-                <div class="card-icon">📜</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="card-icon-svg">
+                    <path fill-rule="evenodd" d="M15.988 3.012A2.25 2.25 0 0 1 18 5.25v9.5A2.25 2.25 0 0 1 15.75 17H4.25A2.25 2.25 0 0 1 2 14.75v-9.5a2.25 2.25 0 0 1 2.25-2.25h1.5l.067-.067A2.25 2.25 0 0 1 7.414 2h5.172a2.25 2.25 0 0 1 1.586.657l.066.066h1.75Zm-10.238 3a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm0 3a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm0 3a.75.75 0 0 0 0 1.5h5.5a.75.75 0 0 0 0-1.5h-5.5Z" clip-rule="evenodd" />
+                </svg>
                 <h3>CSP Generator</h3>
                 <p>Visually build Content Security Policies to block XSS attacks and unauthorized scripts.</p>
                 <div class="launch-btn">BUILD_POLICY _ ></div>
@@ -139,20 +160,29 @@
     <section class="category-section">
         <div class="category-header"><span>[03]</span> Cryptography & Privacy</div>
         <div class="grid-layout">
+            
             <a href="/tools/password-generator.html" class="tool-card-link">
-                <div class="card-icon">🔑</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="card-icon-svg">
+                    <path fill-rule="evenodd" d="M8 7a5 5 0 1 1 3.61 4.804l-1.903 1.903A1 1 0 0 1 9 14H8v1a1 1 0 0 1-1 1H6v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-2a1 1 0 0 1 .293-.707L4.804 10.39A5.002 5.002 0 0 1 8 7Zm2 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" clip-rule="evenodd" />
+                </svg>
                 <h3>Password Generator</h3>
                 <p>Entropy-based generation with hardware-level randomness. Ultra-secure vault ready.</p>
                 <div class="launch-btn">GENERATE_KEY _ ></div>
             </a>
+
             <a href="/tools/breach-checker.html" class="tool-card-link">
-                <div class="card-icon">🚨</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="card-icon-svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5" />
+                </svg>
                 <h3>Breach Checker</h3>
                 <p>Verify if your credentials have been leaked in historical data breaches via LeakCheck.</p>
                 <div class="launch-btn">CHECK_EXPOSURE _ ></div>
             </a>
+
             <a href="/tools/base64-jwt.html" class="tool-card-link">
-                <div class="card-icon">🔄</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="card-icon-svg">
+                    <path fill-rule="evenodd" d="M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.982a.75.75 0 0 0-.75.75v4.25a.75.75 0 0 0 1.5 0v-2.432l.31.31a7 7 0 0 0 11.712-3.138.75.75 0 0 0-1.442-.405ZM4.688 8.576a5.5 5.5 0 0 1 9.201-2.466l.312.311h-2.433a.75.75 0 0 0 0 1.5h4.25a.75.75 0 0 0 .75-.75V2.75a.75.75 0 0 0-1.5 0v2.432l-.31-.31A7 7 0 0 0 3.246 8.01a.75.75 0 1 0 1.442.405Z" clip-rule="evenodd" />
+                </svg>
                 <h3>Base64 & JWT Decoder</h3>
                 <p>Decode and inspect JSON Web Tokens and Base64 encoded strings instantly.</p>
                 <div class="launch-btn">DECODE_DATA _ ></div>
@@ -181,5 +211,6 @@
 </footer>
 
 <script src="/js/main.js"></script>
+
 </body>
 </html>
