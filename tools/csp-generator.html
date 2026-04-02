@@ -46,23 +46,37 @@
 </header>
 
 <main class="container tools-container" style="max-width:820px;">
-  <a href="../index.html" class="back-link">← All tools</a>
+  <a href="../index.html" class="back-link" style="text-decoration: none; color: var(--text-muted); font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 32px; transition: color 0.2s;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 18px; height: 18px;">
+      <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
+    </svg>
+    All tools
+  </a>
 
   <div style="margin-bottom:32px;">
-    <div style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">📋 Tool 07 — Web Security</div>
-    <h1 style="font-size:2rem;font-weight:700;text-transform:uppercase;margin-bottom:10px;">CSP <span style="color:var(--accent);">Generator</span></h1>
-    <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Build a Content Security Policy header visually. Fill in the sources for each directive and get a ready-to-use header value.</p>
+    <div style="display: flex; align-items: center; gap: 10px; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:10px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 18px; height: 18px; flex-shrink: 0;">
+        <path fill-rule="evenodd" d="M18 5.25a2.25 2.25 0 0 0-2.012-2.238A2.25 2.25 0 0 0 13.75 1h-7.5a2.25 2.25 0 0 0-2.238 2.012A2.25 2.25 0 0 0 2 5.25v11.5A2.25 2.25 0 0 0 4.25 19h11.5A2.25 2.25 0 0 0 18 16.75V5.25Zm-8.75 3.75a.75.75 0 0 0-1.06 1.06L9.44 11.31l-1.22 1.22a.75.75 0 1 0 1.06 1.06l1.22-1.22 1.22 1.22a.75.75 0 1 0 1.06-1.06l-1.22-1.22 1.22-1.22a.75.75 0 1 0-1.06-1.06L10.5 10.25l-1.25-1.25Z" clip-rule="evenodd" />
+      </svg>
+      <span>Tool 07 — Web Security</span>
+    </div>
+    <h1 style="font-size:2rem; font-weight:700; text-transform:uppercase; margin-bottom:10px; font-family: var(--font-display); color: var(--text);">CSP <span style="color:var(--accent);">Generator</span></h1>
+    <p style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted); line-height:1.7;">Build a Content Security Policy header visually. Fill in the sources for each directive and get a ready-to-use header value.</p>
   </div>
 
-  <!-- TOOL -->
   <section class="tool-card" style="margin-bottom:40px;">
-    <div class="tool-header">
-      <span class="tool-icon">📋</span>
+    <div class="tool-header" style="display: flex; align-items: flex-start; gap: 16px;">
+      <span class="tool-icon" style="color: var(--accent);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 24px; height: 24px;">
+          <path fill-rule="evenodd" d="M18 5.25a2.25 2.25 0 0 0-2.012-2.238A2.25 2.25 0 0 0 13.75 1h-7.5a2.25 2.25 0 0 0-2.238 2.012A2.25 2.25 0 0 0 2 5.25v11.5A2.25 2.25 0 0 0 4.25 19h11.5A2.25 2.25 0 0 0 18 16.75V5.25Zm-8.75 3.75a.75.75 0 0 0-1.06 1.06L9.44 11.31l-1.22 1.22a.75.75 0 1 0 1.06 1.06l1.22-1.22 1.22 1.22a.75.75 0 1 0 1.06-1.06l-1.22-1.22 1.22-1.22a.75.75 0 1 0-1.06-1.06L10.5 10.25l-1.25-1.25Z" clip-rule="evenodd" />
+        </svg>
+      </span>
       <div>
-        <h2 class="tool-title">CSP Generator</h2>
+        <h2 class="tool-title" style="margin: 0;">CSP Generator</h2>
         <p class="tool-desc">Build a Content Security Policy header visually.</p>
       </div>
     </div>
+    
     <div class="tool-body">
       <div class="csp-grid">
         <div class="csp-row"><label>script-src</label><input type="text" class="text-input" id="csp-script" placeholder="'self' https://cdn.example.com" /></div>
@@ -72,17 +86,37 @@
         <div class="csp-row"><label>font-src</label><input type="text" class="text-input" id="csp-font" placeholder="'self' https://fonts.gstatic.com" /></div>
         <div class="csp-row"><label>frame-src</label><input type="text" class="text-input" id="csp-frame" placeholder="'none'" /></div>
       </div>
-      <div class="options-row">
-        <label><input type="checkbox" id="csp-upgrade" checked /> upgrade-insecure-requests</label>
-        <label><input type="checkbox" id="csp-block" checked /> block-all-mixed-content</label>
+      
+      <div class="options-row" style="margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+        <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted);">
+          <input type="checkbox" id="csp-upgrade" checked style="accent-color: var(--accent);" /> upgrade-insecure-requests
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted);">
+          <input type="checkbox" id="csp-block" checked style="accent-color: var(--accent);" /> block-all-mixed-content
+        </label>
       </div>
-      <button class="btn-primary" onclick="generateCSP()">Generate CSP</button>
-      <div class="output-box mt hidden" id="csp-output-wrap">
+
+      <button class="btn-primary" style="margin-top: 20px; display: flex; align-items: center; gap: 10px;" onclick="generateCSP()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px;">
+          <path fill-rule="evenodd" d="M14.503 4.496a.75.75 0 0 0-.82.114l-4.72 4.722a.75.75 0 1 0 1.06 1.06l4.722-4.72a.75.75 0 0 0-.114-.82l-.128-.156Zm-8.435 6.07a.75.75 0 0 0-.114.82l.128.156a.75.75 0 0 0 .82-.114l4.72-4.722a.75.75 0 0 0-1.06-1.06L5.94 10.41l.128.156Z" clip-rule="evenodd" />
+          <path d="M9 3.033a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 .75.75v1.272a7.464 7.464 0 0 1 2.598.945l.9-.9a.75.75 0 0 1 1.06 0l.354.353a.75.75 0 0 1 0 1.061l-.9.9a7.464 7.464 0 0 1 .945 2.598h1.272a.75.75 0 0 1 .75.75v.5a.75.75 0 0 1-.75.75h-1.272a7.464 7.464 0 0 1-.945 2.598l.9.9a.75.75 0 0 1 0 1.061l-.353.353a.75.75 0 0 1-1.061 0l-.9-.9a7.464 7.464 0 0 1-2.598.945v1.272a.75.75 0 0 1-.75.75h-.5a.75.75 0 0 1-.75-.75v-1.272a7.464 7.464 0 0 1-2.598-.945l-.9.9a.75.75 0 0 1-1.06 0l-.354-.353a.75.75 0 0 1 0-1.061l.9-.9a7.464 7.464 0 0 1-.945-2.598H2.25a.75.75 0 0 1-.75-.75v-.5a.75.75 0 0 1 .75-.75h1.272a7.464 7.464 0 0 1 .945-2.598l-.9-.9a.75.75 0 0 1 0-1.061l.353-.353a.75.75 0 0 1 1.061 0l.9.9A7.464 7.464 0 0 1 9 4.305V3.033Z" />
+        </svg>
+        Generate CSP
+      </button>
+
+      <div class="output-box mt hidden" id="csp-output-wrap" style="margin-top: 20px;">
         <code id="csp-output" class="mono small"></code>
-        <button class="copy-btn" onclick="copyText('csp-output')">Copy</button>
+        <button class="copy-btn" onclick="copyText('csp-output')" style="display: flex; align-items: center; gap: 6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 14px; height: 14px;">
+            <path d="M7 3.5A1.5 1.5 0 0 1 8.5 2h3.879a1.5 1.5 0 0 1 1.06.44l3.122 3.12a1.5 1.5 0 0 1 .439 1.061V16.5A1.5 1.5 0 0 1 15.5 18h-7A1.5 1.5 0 0 1 7 16.5v-13Z" />
+            <path d="M4.5 6A1.5 1.5 0 0 0 3 7.5v9A2.5 2.5 0 0 0 5.5 19h7a1.5 1.5 0 0 0 1.5-1.5V17H5.5A1.5 1.5 0 0 1 4 15.5V6h.5Z" />
+          </svg>
+          Copy
+        </button>
       </div>
     </div>
   </section>
+
 
   <!-- GUIDE -->
   <div class="guide-section">
