@@ -954,3 +954,19 @@ body::before {
   color: var(--green);
   background: rgba(16,185,129,0.07);
 }
+/* Soporte para Heroicons en Tool Cards */
+.tool-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--accent); /* Usa tu variable de cyan #22d3ee */
+  display: block;
+}
+
+/* Ajuste opcional para el contenedor del icono */
+.tool-header .tool-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+}
